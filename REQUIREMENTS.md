@@ -22,10 +22,10 @@ The requirements below are broken into separate **tiers**, which model the way w
 - [ ] Write a route to serve up all campuses
 
 - Write a `campuses` model with the following information:
-  - [ ] name - not empty or null
-  - [ ] imageUrl - with a default value
-  - [ ] address - not empty or null
-  - [ ] description - extremely large text
+  - [x] name - not empty or null
+  - [x] imageUrl - with a default value
+  - [x] address - not empty or null
+  - [x] description - extremely large text
 - Write a `students` model with the following information:
   - [ ] firstName - not empty or null
   - [ ] lastName - not empty or null
