@@ -8,8 +8,11 @@ const rootReducer = combineReducers({
   student: studentReducer,
 });
 
-function configureStore() {
-  return createStore(rootReducer, applyMiddleware(thunk));
-}
+// function configureStore() {
+//   return createStore(rootReducer, applyMiddleware(thunk));
+// }
 
-export default configureStore;
+const store = createStore(rootReducer, applyMiddleware(thunk));
+
+// export default configureStore;
+export default store;
