@@ -18,7 +18,7 @@ module.exports = db.define("student", {
     },
   },
   imageUrl: {
-    type: Sequelize.STRING,
+    type: Sequelize.TEXT,
     defaultValue:
       "https://static.wixstatic.com/media/11b692_f2c60859454d4df5b14d62f4814ab5d0~mv2.jpg/v1/fill/w_905,h_1252,al_c,q_85/11b692_f2c60859454d4df5b14d62f4814ab5d0~mv2.jpg",
   },
