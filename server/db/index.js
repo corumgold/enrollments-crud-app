@@ -13,12 +13,29 @@ const syncAndSeed = async () => {
 
   //use this area to sync your database
   await Campus.create({
-    name: "University of Oregon",
+    name: "University of Tennessee",
     imageUrl:
-      "https://ca-times.brightspotcdn.com/dims4/default/5f1da58/2147483647/strip/true/crop/1738x912+0+123/resize/1200x630!/quality/90/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2Fca%2F15%2Fd83b224aa6f519102f14516e6c05%2Fla-trb-clh1-ca-0e-0813-lampoon10-0-1-20180730",
-    address: "1585 E 13th Ave, Eugene, OR 97403",
+      "https://media-exp1.licdn.com/dms/image/C4D1BAQFz8kP2v7zASA/company-background_10000/0/1519799634774?e=2147483647&v=beta&t=TosW85pSJELKzC57ri7Gn2omEFEKI-h_B5Qom4PTLCI",
+    address: "615 McCallie Ave, Chattanooga, TN 37402",
     description:
-      "When they arrive at college, socially inept freshmen Larry (Thomas Hulce) and Kent (Stephen Furst) attempt to pledge the snooty Omega Theta Pi House, but are summarily rejected. Lowering their standards, they try at the notoriously rowdy Delta Tau Chi House, and get in. The trouble is, the college dean (John Vernon) has it in for the Deltas. He has put them on 'Double Secret Probation' and secretly assigned Omega's president (James Daughton) the task of having their charter revoked.",
+      "The University of Tennessee at Chattanooga is a public university in Chattanooga, Tennessee. It is one of four universities and two other affiliated institutions in the University of Tennessee System.",
+  });
+
+  await Campus.create({
+    name: "Chattanooga State",
+    imageUrl:
+      "https://www.mbicompanies.com/wp-content/uploads/Photos/Projects/ChattStateHealthScience/MBI_ChattanoogaStateHealthSciences_Projects_001_1920.jpg",
+    address: "4501 Amnicola Hwy, Chattanooga, TN 37406",
+    description:
+      "Chattanooga State Community College is a public community college in Chattanooga, Tennessee. The college is a member of the Tennessee Board of Regents System and is accredited by the Southern Association of Colleges and Schools. Athletically, Chattanooga State is a member of Region VII of the NJCAA.",
+  });
+
+  await Campus.create({
+    name: "PennWest California",
+    imageUrl: "https://www.calu.edu/news/2020/20files/campus-aerial.jpg",
+    address: "250 University Ave, California, PA 15419",
+    description:
+      "Pennsylvania Western University, California is a public university campus in California, Pennsylvania and one of three campuses of Pennsylvania Western University, part of the Pennsylvania State System of Higher Education.",
   });
 
   await Student.create({
@@ -28,6 +45,7 @@ const syncAndSeed = async () => {
     imageUrl:
       "https://static.wikia.nocookie.net/p__/images/0/08/John_Blutarsky.jpg/revision/latest?cb=20140104152718&path-prefix=protagonist",
     gpa: 1.46,
+    campusId: 1,
   });
 
   console.log(`
