@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 
 const Students = () => {
   const students = useSelector((state) => state.students);
-  console.dir(students);
 
   return (
     <>

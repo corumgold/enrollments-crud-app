@@ -15,6 +15,7 @@ const Campuses = () => {
               {campus.name} ({enrollments}
               {!enrollments || enrollments > 1 ? " Enrollments" : " Enrollment"})
             </h2>
+            <img src={campus.imageUrl} alt="campus photo" />
             <p>{campus.description}</p>
           </div>
         );

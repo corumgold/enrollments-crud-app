@@ -8,18 +8,18 @@ The requirements below are broken into separate **tiers**, which model the way w
 
 #### Frontend
 
-- [ ] Write a component to display a list of all campuses (at least their names and images)
-- [ ] Write a component to display a list of all students (at least their names)
-- [ ] Write a campuses sub-reducer to manage campuses in your Redux store
-- [ ] Write a students sub-reducer to manage students in your Redux store
-- [ ] Display the all-campuses component when the url matches `/campuses`
-- [ ] Display the all-students component when the url matches `/students`
-- [ ] Add a links to the navbar that can be used to navigate to the all-campuses view and the all-students view
+- [X] Write a component to display a list of all campuses (at least their names and images)
+- [X] Write a component to display a list of all students (at least their names)
+- [X] Write a campuses sub-reducer to manage campuses in your Redux store
+- [X] Write a students sub-reducer to manage students in your Redux store
+- [X] Display the all-campuses component when the url matches `/campuses`
+- [X] Display the all-students component when the url matches `/students`
+- [X] Add a links to the navbar that can be used to navigate to the all-campuses view and the all-students view
 
 #### Backend
 
-- [ ] Write a route to serve up all students
-- [ ] Write a route to serve up all campuses
+- [X] Write a route to serve up all students
+- [X] Write a route to serve up all campuses
 
 - Write a `campuses` model with the following information:
   - [x] name - not empty or null
@@ -36,7 +36,7 @@ The requirements below are broken into separate **tiers**, which model the way w
 
 #### Seed
 
-- [ ] Running the seed file creates campuses and students for demonstration purposes
+- [X] Running the seed file creates campuses and students for demonstration purposes
 
 Congrats! You have completed your first vertical slice! Make sure to `commit -m "Feature: Get All Campuses and Students"` before moving on (see RUBRIC.md - points are awarded/deducted for a proper git workflow)!
 
