@@ -7,6 +7,7 @@ import StudentPage from "./components/StudentPage";
 import { getCampuses } from "./store/reducers/campusReducer";
 import { getStudents } from "./store/reducers/studentReducer";
 import { Routes, Route, Link } from "react-router-dom";
+import Home from "./components/Home";
 
 function App() {
   const dispatch = useDispatch();
@@ -23,6 +24,9 @@ function App() {
     <>
       <div>
         <nav>
+          <Link to={"/"}>
+            <button>Home</button>
+          </Link>
           <Link to={"/students"}>
             <button>Students ({students.length})</button>
           </Link>
@@ -32,7 +36,7 @@ function App() {
         </nav>
       </div>
       <Routes>
-        <Route index />
+        <Route index element={<Home />} />
         <Route path="campuses" element={<Campuses />} />
         <Route path="students" element={<Students />} />
 

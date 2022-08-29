@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { updateCampus, getCampuses } from "../store/reducers/campusReducer";
 
-
 const CampusPage = () => {
   const params = useParams();
   const dispatch = useDispatch();

@@ -7,7 +7,6 @@ import { deleteCampus } from "../store/reducers/campusReducer";
 const Campuses = () => {
   const campuses = useSelector((state) => state.campuses);
   const dispatch = useDispatch();
-  console.dir(campuses);
 
   return (
     <>
