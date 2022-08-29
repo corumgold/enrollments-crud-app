@@ -39,13 +39,35 @@ const syncAndSeed = async () => {
   });
 
   await Student.create({
-    firstName: "John (Bluto)",
-    lastName: "Blutarsky",
-    email: "j.blutarsky@oregon.edu",
-    imageUrl:
-      "https://static.wikia.nocookie.net/p__/images/0/08/John_Blutarsky.jpg/revision/latest?cb=20140104152718&path-prefix=protagonist",
-    gpa: 1.46,
+    firstName: "Philip D.",
+    lastName: "Glass",
+    email: "pdglass@gmail.com",
+    gpa: 2.75,
     campusId: 1,
+  });
+
+  await Student.create({
+    firstName: "Seamore",
+    lastName: "Butts",
+    email: "s.butts@underthebleachers.org",
+    gpa: 1.46,
+    campusId: 2,
+  });
+
+  await Student.create({
+    firstName: "Anita",
+    lastName: "Jobbe",
+    email: "a.f.jobbe@hotmail.com",
+    gpa: 3.51,
+    campusId: 2,
+  });
+
+  await Student.create({
+    firstName: "Barb E.",
+    lastName: "Dahl",
+    email: "barbdahl@yahoo.com",
+    gpa: 4.0,
+    campusId: 3,
   });
 
   console.log(`
