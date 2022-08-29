@@ -42,6 +42,8 @@ const syncAndSeed = async () => {
     firstName: "Philip D.",
     lastName: "Glass",
     email: "pdglass@gmail.com",
+    imageUrl:
+      "https://d2jyir0m79gs60.cloudfront.net/news/images/successful-college-student-lg.png",
     gpa: 2.75,
   });
 
@@ -49,6 +51,8 @@ const syncAndSeed = async () => {
     firstName: "Seamore",
     lastName: "Butts",
     email: "s.butts@underthebleachers.org",
+    imageUrl:
+      "https://files.consumerfinance.gov/f/images/cfpb_choosing-a-loan.original.jpg",
     gpa: 1.46,
     campusId: 2,
   });
@@ -57,6 +61,8 @@ const syncAndSeed = async () => {
     firstName: "Anita",
     lastName: "Jobbe",
     email: "a.f.jobbe@hotmail.com",
+    imageUrl:
+      "https://regionalcollegepa.org/wp-content/uploads/2020/06/shutterstock_660004024.jpg",
     gpa: 3.51,
     campusId: 2,
   });
@@ -65,6 +71,8 @@ const syncAndSeed = async () => {
     firstName: "Barb E.",
     lastName: "Dahl",
     email: "barbdahl@yahoo.com",
+    imageUrl:
+      "https://content.gallup.com/origin/gallupinc/GallupSpaces/Production/Cms/EDUCMS/tz7n-7vqceaq86dprdnzag.jpg",
     gpa: 4.0,
     campusId: 1,
   });

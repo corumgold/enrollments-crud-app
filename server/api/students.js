@@ -13,7 +13,7 @@ router.get("/", async (req, res, next) => {
 //GET /students/:id
 router.get("/:studentId", async (req, res, next) => {
   try {
-    res.send(await Student.findByPk({ include: Campus }));
+    res.send(await Student.findByPk(req.params.studentId, { include: Campus }));
   } catch (err) {
     next(err);
   }

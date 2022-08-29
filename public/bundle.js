@@ -2686,8 +2686,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
 /* harmony import */ var _CampusForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CampusForm */ "./src/components/CampusForm.js");
+/* harmony import */ var _store_reducers_campusReducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../store/reducers/campusReducer */ "./src/store/reducers/campusReducer.js");
+
 
 
 
@@ -2697,18 +2699,23 @@ var Campuses = function Campuses() {
   var campuses = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
     return state.campuses;
   });
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, campuses.map(function (campus) {
     var _campus$students;
 
     var enrollments = (_campus$students = campus.students) === null || _campus$students === void 0 ? void 0 : _campus$students.length;
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       key: campus.id
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
       to: "/campuses/".concat(campus.id)
     }, campus.name, " (", enrollments, !enrollments || enrollments > 1 ? " Enrollments" : " Enrollment", ")")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
       src: campus.imageUrl,
       alt: "campus photo"
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, campus.description));
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, campus.description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+      onClick: function onClick() {
+        return dispatch((0,_store_reducers_campusReducer__WEBPACK_IMPORTED_MODULE_3__.deleteCampus)(campus));
+      }
+    }, "Delete Campus"));
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "New Campus Form"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_CampusForm__WEBPACK_IMPORTED_MODULE_2__["default"], null));
 };
 
@@ -2958,6 +2965,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "createCampus": () => (/* binding */ createCampus),
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
+/* harmony export */   "deleteCampus": () => (/* binding */ deleteCampus),
 /* harmony export */   "getCampuses": () => (/* binding */ getCampuses)
 /* harmony export */ });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
@@ -2985,7 +2993,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
  //ACTION TYPES
 
 var SET_CAMPUSES = "SET_CAMPUSES";
-var CREATE_CAMPUS = "CREATE_CAMPUS"; //ACTION CREATORS
+var CREATE_CAMPUS = "CREATE_CAMPUS";
+var DELETE_CAMPUS = "DELETE_CAMPUS"; //ACTION CREATORS
 
 var _setCampuses = function _setCampuses(campuses) {
   return {
@@ -2997,6 +3006,13 @@ var _setCampuses = function _setCampuses(campuses) {
 var _createCampus = function _createCampus(campus) {
   return {
     type: CREATE_CAMPUS,
+    campus: campus
+  };
+};
+
+var _deleteCampus = function _deleteCampus(campus) {
+  return {
+    type: DELETE_CAMPUS,
     campus: campus
   };
 }; //THUNKS
@@ -3062,6 +3078,36 @@ var createCampus = function createCampus(campus) {
     };
   }();
 };
+var deleteCampus = function deleteCampus(campus) {
+  return /*#__PURE__*/function () {
+    var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(dispatch) {
+      var _yield$axios$delete, deleted;
+
+      return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              _context3.next = 2;
+              return axios__WEBPACK_IMPORTED_MODULE_0___default()["delete"]("/api/campuses/".concat(campus.id));
+
+            case 2:
+              _yield$axios$delete = _context3.sent;
+              deleted = _yield$axios$delete.data;
+              dispatch(_deleteCampus(deleted));
+
+            case 5:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3);
+    }));
+
+    return function (_x3) {
+      return _ref3.apply(this, arguments);
+    };
+  }();
+};
 
 var campusReducer = function campusReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
@@ -3073,6 +3119,11 @@ var campusReducer = function campusReducer() {
 
     case CREATE_CAMPUS:
       return [].concat(_toConsumableArray(state), [action.campus]);
+
+    case DELETE_CAMPUS:
+      return state.filter(function (campus) {
+        return campus.id !== action.campus.id;
+      });
 
     default:
       return state;
