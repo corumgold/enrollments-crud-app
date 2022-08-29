@@ -17,7 +17,7 @@ const CampusPage = () => {
 
       <h2>Enrollees</h2>
       <ul>
-        {campus.students.length
+        {campus.students?.length
           ? campus.students.map((student) => {
               return (
                 <li key={student.id}>

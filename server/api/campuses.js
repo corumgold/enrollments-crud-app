@@ -1,6 +1,5 @@
 const router = require("express").Router();
-const { Student } = require("../db");
-const Campus = require("../db/campus");
+const { Student, Campus } = require("../db");
 
 //GET /campuses
 router.get("/", async (req, res, next) => {
@@ -23,7 +22,7 @@ router.get("/:campusId", async (req, res, next) => {
 //POST /campuses
 router.post("/", async (req, res, next) => {
   try {
-    res.sendStatus(201).send(await Campus.create(req.body));
+    res.status(201).send(await Campus.create(req.body));
   } catch (err) {
     next(err);
   }

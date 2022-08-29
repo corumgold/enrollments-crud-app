@@ -29,7 +29,7 @@ export const getCampuses = () => {
 
 export const createCampus = (campus) => {
   return async (dispatch) => {
-    const { data: created } = await axios.post("/api/campuses", campus);
+    const { data: created } = await axios.post("/api/campuses", campus)
     dispatch(_createCampus(created));
   };
 };

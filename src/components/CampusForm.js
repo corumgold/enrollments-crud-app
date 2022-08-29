@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { createCampus } from "../store/reducers/campusReducer";
+import { createCampus, getCampuses } from "../store/reducers/campusReducer";
 import { useDispatch } from "react-redux";
 
 const CampusForm = () => {
@@ -20,7 +20,8 @@ const CampusForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(createCampus({ ...newCampus }));
+    dispatch(createCampus(newCampus));
+    dispatch(getCampuses());
     setNewCampus({
       ...newCampus,
       name: "",

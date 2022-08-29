@@ -9,7 +9,7 @@ const Campuses = () => {
   return (
     <>
       {campuses.map((campus) => {
-        const enrollments = campus.students.length;
+        const enrollments = campus.students?.length;
 
         return (
           <div key={campus.id}>

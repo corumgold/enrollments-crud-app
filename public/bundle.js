@@ -2501,8 +2501,7 @@ function App() {
   });
   var students = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
     return state.students;
-  });
-  console.log(campuses); //Load campuses and students on app load
+  }); //Load campuses and students on app load
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     dispatch((0,_store_reducers_campusReducer__WEBPACK_IMPORTED_MODULE_6__.getCampuses)());
@@ -2595,7 +2594,8 @@ var CampusForm = function CampusForm() {
 
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
-    dispatch((0,_store_reducers_campusReducer__WEBPACK_IMPORTED_MODULE_1__.createCampus)(_objectSpread({}, newCampus)));
+    dispatch((0,_store_reducers_campusReducer__WEBPACK_IMPORTED_MODULE_1__.createCampus)(newCampus));
+    dispatch((0,_store_reducers_campusReducer__WEBPACK_IMPORTED_MODULE_1__.getCampuses)());
     setNewCampus(_objectSpread(_objectSpread({}, newCampus), {}, {
       name: "",
       address: ""
@@ -2648,6 +2648,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var CampusPage = function CampusPage() {
+  var _campus$students;
+
   var params = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.useParams)();
   var campuses = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
     return state.campuses;
@@ -2658,7 +2660,7 @@ var CampusPage = function CampusPage() {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, campus.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, campus.address), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
     src: campus.imageUrl,
     alt: "campus photo"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, campus.description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Enrollees"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, campus.students.length ? campus.students.map(function (student) {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, campus.description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Enrollees"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, (_campus$students = campus.students) !== null && _campus$students !== void 0 && _campus$students.length ? campus.students.map(function (student) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
       key: student.id
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
@@ -2697,7 +2699,9 @@ var Campuses = function Campuses() {
     return state.campuses;
   });
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, campuses.map(function (campus) {
-    var enrollments = campus.students.length;
+    var _campus$students;
+
+    var enrollments = (_campus$students = campus.students) === null || _campus$students === void 0 ? void 0 : _campus$students.length;
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       key: campus.id
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
