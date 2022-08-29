@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { deleteStudent } from "../store/reducers/studentReducer";
 import StudentForm from "./StudentForm";
 
 const Students = () => {
   const students = useSelector((state) => state.students);
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -21,6 +23,9 @@ const Students = () => {
                 : "(student is not enrolled)"}
             </h2>
             <p>{student.email}</p>
+            <button onClick={() => dispatch(deleteStudent(student))}>
+              Delete Student
+            </button>
           </div>
         );
       })}

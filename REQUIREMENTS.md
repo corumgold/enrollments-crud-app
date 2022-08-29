@@ -106,11 +106,11 @@ Congrats! You have completed your third vertical slice! Make sure to `commit -m 
 
 #### Frontend
 
-- [ ] In the all-campuses view, include an `X` button next to each campus
+- [X] In the all-campuses view, include an `X` button next to each campus
 - Clicking the `X` button should:
 
-  - [ ] Make an AJAX request that causes that campus to be removed from database
-  - [ ] Remove the campus from the list of campuses without needing to refresh the page
+  - [X] Make an AJAX request that causes that campus to be removed from database
+  - [X] Remove the campus from the list of campuses without needing to refresh the page
 
 - [ ] In the all-students view, include an `X` button next to each student
 - Clicking the `X` button should:
@@ -119,7 +119,7 @@ Congrats! You have completed your third vertical slice! Make sure to `commit -m 
 
 #### Backend
 
-- [ ] Write a route to remove a campus (based on its id)
+- [X] Write a route to remove a campus (based on its id)
 - [ ] Write a route to remove a student (based on their id)
 
 Congrats! You have completed your fourth vertical slice! Make sure to `commit -m "Feature: Remove Campus and Student"` before moving on (see RUBRIC.md - points are awarded/deducted for a proper git workflow)!
