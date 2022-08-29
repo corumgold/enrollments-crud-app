@@ -9,7 +9,7 @@ import { Routes, Route, Link } from "react-router-dom";
 function App() {
   const dispatch = useDispatch();
   const campuses = useSelector((state) => state.campuses);
-    const students = useSelector((state) => state.students);
+  const students = useSelector((state) => state.students);
 
   //Load campuses and students on app load
   useEffect(() => {
@@ -21,11 +21,11 @@ function App() {
     <>
       <div>
         <nav>
-          <Link to={"/campuses"}>
-            <button>Campuses ({campuses.length})</button>
-          </Link>
           <Link to={"/students"}>
             <button>Students ({students.length})</button>
+          </Link>
+          <Link to={"/campuses"}>
+            <button>Campuses ({campuses.length})</button>
           </Link>
         </nav>
       </div>
