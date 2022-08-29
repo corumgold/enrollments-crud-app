@@ -12,7 +12,7 @@ app.use(volleyball)
 
 //this is where some things should go
 
-
+app.use('/api', require('./api'));
 
 
 

@@ -4,8 +4,8 @@ import campusReducer from "./reducers/campusReducer";
 import studentReducer from "./reducers/studentReducer";
 
 const rootReducer = combineReducers({
-  campus: campusReducer,
-  student: studentReducer,
+  campuses: campusReducer,
+  students: studentReducer,
 });
 
 // function configureStore() {
