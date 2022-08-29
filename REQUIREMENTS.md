@@ -49,7 +49,7 @@ Congrats! You have completed your first vertical slice! Make sure to `commit -m 
 #### Frontend
 
 - Write a component to display a single campus with the following information:
-  - [ ] The campus's name, image, address and description
+  - [X] The campus's name, image, address and description
   - [ ] A list of the names of all students in that campus (or a helpful message if it doesn't have any students)
 - [ ] Display the appropriate campus's info when the url matches `/campuses/:campusId`
 - [ ] Clicking on a campus from the all-campuses view should navigate to show that campus in the single-campus view

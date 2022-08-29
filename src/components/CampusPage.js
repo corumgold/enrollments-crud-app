@@ -16,13 +16,17 @@ const CampusPage = () => {
       <p>{campus.description}</p>
 
       <h2>Enrollees</h2>
-      {campus.students.map((student) => {
-        return (
-          <p>
-            {student.lastName}, {student.firstName}
-          </p>
-        );
-      })}
+      <p>
+        {campus.students.length
+          ? campus.students.map((student) => {
+              return (
+                <>
+                  {student.lastName}, {student.firstName}
+                </>
+              );
+            })
+          : "There are no enrollees!"}
+      </p>
     </div>
   );
 };

@@ -67,7 +67,7 @@ const syncAndSeed = async () => {
     lastName: "Dahl",
     email: "barbdahl@yahoo.com",
     gpa: 4.0,
-    campusId: 3,
+    campusId: 1,
   });
 
   console.log(`
