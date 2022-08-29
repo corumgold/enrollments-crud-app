@@ -55,7 +55,7 @@ Congrats! You have completed your first vertical slice! Make sure to `commit -m 
 - [X] Clicking on a campus from the all-campuses view should navigate to show that campus in the single-campus view
 
 - Write a component to display a single student with the following information:
-  - [ ] The student's full name, email, image, and gpa
+  - [X] The student's full name, email, image, and gpa
   - [ ] The name of their campus (or a helpful message if they don't have one)
 - [ ] Display the appropriate student when the url matches `/students/:studentId`
 - [ ] Clicking on a student from the all-students view should navigate to show that student in the single-student view
