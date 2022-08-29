@@ -43,7 +43,6 @@ const syncAndSeed = async () => {
     lastName: "Glass",
     email: "pdglass@gmail.com",
     gpa: 2.75,
-    campusId: 1,
   });
 
   await Student.create({
