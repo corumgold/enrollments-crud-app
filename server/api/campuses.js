@@ -20,4 +20,13 @@ router.get("/:campusId", async (req, res, next) => {
   }
 });
 
+//POST /campuses
+router.post("/", async (req, res, next) => {
+  try {
+    res.sendStatus(201).send(await Campus.create(req.body));
+  } catch (err) {
+    next(err);
+  }
+});
+
 module.exports = router;

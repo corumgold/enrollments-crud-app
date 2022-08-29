@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import CampusForm from "./CampusForm";
 
 const Campuses = () => {
   const campuses = useSelector((state) => state.campuses);
@@ -26,6 +27,9 @@ const Campuses = () => {
           </div>
         );
       })}
+
+      <h2>New Campus Form</h2>
+      <CampusForm />
     </>
   );
 };
