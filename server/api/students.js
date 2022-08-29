@@ -11,4 +11,13 @@ router.get("/", async (req, res, next) => {
   }
 });
 
+//GET /students/:id
+router.get("/:studentId", async (req, res, next) => {
+  try {
+    res.send(await Student.findByPk({ include: Campus }));
+  } catch (err) {
+    next(err);
+  }
+});
+
 module.exports = router;

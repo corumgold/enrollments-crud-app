@@ -1,12 +1,12 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const CampusPage = () => {
   const params = useParams();
   const campuses = useSelector((state) => state.campuses);
-  const campus = campuses.find((campus) => campus.id === +params.id);
-  console.dir(campus);
+  const campus = campuses.find((campus) => campus.id === +params.campusId);
 
   return (
     <div>
@@ -16,17 +16,19 @@ const CampusPage = () => {
       <p>{campus.description}</p>
 
       <h2>Enrollees</h2>
-      <p>
+      <ul>
         {campus.students.length
           ? campus.students.map((student) => {
               return (
-                <>
-                  {student.lastName}, {student.firstName}
-                </>
+                <li key={student.id}>
+                  <Link to={`/students/${student.id}`}>
+                    {student.lastName}, {student.firstName}
+                  </Link>
+                </li>
               );
             })
           : "There are no enrollees!"}
-      </p>
+      </ul>
     </div>
   );
 };
