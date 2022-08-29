@@ -25,10 +25,12 @@ const Campuses = () => {
               </Link>
             </h2>
             <img src={campus.imageUrl} alt="campus photo" />
-            <p>{campus.description}</p>
-            <button onClick={() => dispatch(deleteCampus(campus))}>
-              Delete Campus
-            </button>
+            <p>
+              {campus.description}{" "}
+              <button onClick={() => dispatch(deleteCampus(campus))}>
+                X
+              </button>
+            </p>
           </div>
         );
       })}

@@ -2711,11 +2711,11 @@ var Campuses = function Campuses() {
     }, campus.name, " (", enrollments, !enrollments || enrollments > 1 ? " Enrollments" : " Enrollment", ")")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
       src: campus.imageUrl,
       alt: "campus photo"
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, campus.description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, campus.description, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
       onClick: function onClick() {
         return dispatch((0,_store_reducers_campusReducer__WEBPACK_IMPORTED_MODULE_3__.deleteCampus)(campus));
       }
-    }, "Delete Campus"));
+    }, "X")));
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "New Campus Form"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_CampusForm__WEBPACK_IMPORTED_MODULE_2__["default"], null));
 };
 
@@ -2917,11 +2917,11 @@ var Students = function Students() {
       key: student.id
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
       to: "/students/".concat(student.id)
-    }, student.lastName, ", ", student.firstName), " ", "- attends", " ", student.campus ? student.campus.name : "(student is not enrolled)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, student.email), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    }, student.lastName, ", ", student.firstName), " ", "- attends", " ", student.campus ? student.campus.name : "(student is not enrolled)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, student.email, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
       onClick: function onClick() {
         return dispatch((0,_store_reducers_studentReducer__WEBPACK_IMPORTED_MODULE_2__.deleteStudent)(student));
       }
-    }, "Delete Student"));
+    }, "X")));
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_StudentForm__WEBPACK_IMPORTED_MODULE_3__["default"], null));
 };
 

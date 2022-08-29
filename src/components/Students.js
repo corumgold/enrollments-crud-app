@@ -22,10 +22,12 @@ const Students = () => {
                 ? student.campus.name
                 : "(student is not enrolled)"}
             </h2>
-            <p>{student.email}</p>
-            <button onClick={() => dispatch(deleteStudent(student))}>
-              Delete Student
-            </button>
+            <p>
+              {student.email}{" "}
+              <button onClick={() => dispatch(deleteStudent(student))}>
+                X
+              </button>
+            </p>
           </div>
         );
       })}
