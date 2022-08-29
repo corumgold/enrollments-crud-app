@@ -4,9 +4,18 @@ import { useSelector } from "react-redux";
 const Campuses = () => {
   const campuses = useSelector((state) => state.campuses);
 
-  console.log(campuses);
-
-  return <div>Campuses</div>;
+  return (
+    <>
+      {campuses.map((campus) => {
+        return (
+          <div key={campus.id}>
+            <h2>{campus.name}</h2>
+            <p>{campus.description}</p>
+          </div>
+        );
+      })}
+    </>
+  );
 };
 
 export default Campuses;
