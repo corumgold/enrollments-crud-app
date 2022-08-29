@@ -4,6 +4,7 @@ import axios from "axios";
 const SET_CAMPUSES = "SET_CAMPUSES";
 const CREATE_CAMPUS = "CREATE_CAMPUS";
 const DELETE_CAMPUS = "DELETE_CAMPUS";
+const UPDATE_CAMPUS = "UPDATE_CAMPUS";
 
 //ACTION CREATORS
 const _setCampuses = (campuses) => {
@@ -23,6 +24,13 @@ const _createCampus = (campus) => {
 const _deleteCampus = (campus) => {
   return {
     type: DELETE_CAMPUS,
+    campus,
+  };
+};
+
+const _updateCampus = (campus) => {
+  return {
+    type: UPDATE_CAMPUS,
     campus,
   };
 };
@@ -49,6 +57,16 @@ export const deleteCampus = (campus) => {
   };
 };
 
+export const updateCampus = (campus) => {
+  return async (dispatch) => {
+    const { data: updated } = await axios.put(
+      `/api/campuses/${campus.id}`,
+      campus
+    );
+    dispatch(_updateCampus(updated));
+  };
+};
+
 const campusReducer = (state = [], action) => {
   switch (action.type) {
     case SET_CAMPUSES:
@@ -57,6 +75,12 @@ const campusReducer = (state = [], action) => {
       return [...state, action.campus];
     case DELETE_CAMPUS:
       return state.filter((campus) => campus.id !== action.campus.id);
+    case UPDATE_CAMPUS:
+      return state.map((campus) => {
+        if (campus.id === action.campus.id) {
+          return action.campus;
+        } else return campus;
+      });
     default:
       return state;
   }

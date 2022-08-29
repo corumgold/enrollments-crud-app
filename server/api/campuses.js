@@ -40,4 +40,14 @@ router.delete("/:campusId", async (req, res, next) => {
   }
 });
 
+//PUT /campuses/:id
+router.put('/:campusId', async (req, res, next) => {
+  try {
+    const campus = await Campus.findByPk(req.params.campusId);
+    res.send(await campus.update(req.body));
+  } catch (error) {
+    next(error);
+  }
+});
+
 module.exports = router;

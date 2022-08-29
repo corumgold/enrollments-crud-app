@@ -7,11 +7,15 @@ import { deleteCampus } from "../store/reducers/campusReducer";
 const Campuses = () => {
   const campuses = useSelector((state) => state.campuses);
   const dispatch = useDispatch();
+  console.dir(campuses);
 
   return (
     <>
       {campuses.map((campus) => {
-        const enrollments = campus?.students?.length;
+        let enrollments = 0;
+        if (campus.students) {
+          enrollments = campus.students.length;
+        }
 
         return (
           <div key={campus.id}>
@@ -27,9 +31,7 @@ const Campuses = () => {
             <img src={campus.imageUrl} alt="campus photo" />
             <p>
               {campus.description}{" "}
-              <button onClick={() => dispatch(deleteCampus(campus))}>
-                X
-              </button>
+              <button onClick={() => dispatch(deleteCampus(campus))}>X</button>
             </p>
           </div>
         );
