@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Campuses = () => {
   const campuses = useSelector((state) => state.campuses);
@@ -12,8 +13,13 @@ const Campuses = () => {
         return (
           <div key={campus.id}>
             <h2>
-              {campus.name} ({enrollments}
-              {!enrollments || enrollments > 1 ? " Enrollments" : " Enrollment"})
+              <Link to={`/campuses/${campus.id}`}>
+                {campus.name} ({enrollments}
+                {!enrollments || enrollments > 1
+                  ? " Enrollments"
+                  : " Enrollment"}
+                )
+              </Link>
             </h2>
             <img src={campus.imageUrl} alt="campus photo" />
             <p>{campus.description}</p>
