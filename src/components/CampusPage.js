@@ -3,9 +3,12 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import CampusForm from "./CampusForm";
+import { updateStudent } from "../store/reducers/studentReducer";
+import { useDispatch } from "react-redux";
 
 const CampusPage = () => {
   const params = useParams();
+  const dispatch = useDispatch();
 
   const [campus, setCampus] = useState({
     name: "",
@@ -15,10 +18,15 @@ const CampusPage = () => {
     students: [],
   });
 
+  const handleUnenroll = (student) => {
+    dispatch(updateStudent({ ...student, campusId: null }));
+    setCampus({ ...campus });
+  };
+
   useEffect(() => {
     const getData = async () => {
       const campusData = await axios.get(`/api/campuses/${params.campusId}`);
-      setCampus(campusData.data);
+      setCampus({ ...campusData.data });
     };
     getData();
   }, []);
@@ -41,11 +49,9 @@ const CampusPage = () => {
                   <Link to={`/students/${student.id}`}>
                     {student.lastName}, {student.firstName}
                   </Link>
-                  {/* <button
-                    onClick={async () =>
-                      await student.update({ campusId: null })
-                    }
-                  >Unenroll</button> */}
+                  <button onClick={() => handleUnenroll(student)}>
+                    Unenroll
+                  </button>
                 </li>
               );
             })

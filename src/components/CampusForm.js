@@ -34,9 +34,10 @@ const CampusForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (newCampus) {
-      dispatch(createCampus(campus));
-    } else dispatch(updateCampus(campus));
+      dispatch(createCampus({ ...campus }));
+    } else dispatch(updateCampus({ ...campus }));
     setCampus({
+      ...campus,
       name: "",
       address: "",
       description: "",

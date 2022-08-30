@@ -39,9 +39,10 @@ const StudentForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (newStudent) {
-      dispatch(createStudent(student));
-    } else dispatch(updateStudent(student));
+      dispatch(createStudent({ ...student }));
+    } else dispatch(updateStudent({ ...student }));
     setStudent({
+      ...student,
       firstName: "",
       lastName: "",
       email: "",
