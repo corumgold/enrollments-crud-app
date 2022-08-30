@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-import Form from "./Form";
+import CampusForm from "./CampusForm";
 
 const CampusPage = () => {
   const params = useParams();
@@ -31,7 +31,7 @@ const CampusPage = () => {
       <img src={campus.imageUrl} alt="campus photo" />
       <p>{campus.description}</p>
 
-      <Form />
+      <CampusForm />
 
       <h2>Enrollees</h2>
       <ul>

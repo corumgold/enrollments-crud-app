@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import CampusForm from "../../outofuse/CampusForm";
 import { deleteCampus } from "../store/reducers/campusReducer";
-import Form from "./Form";
+import CampusForm from "./CampusForm";
 
 const Campuses = () => {
   const campuses = useSelector((state) => state.campuses);
@@ -41,7 +41,7 @@ const Campuses = () => {
       })}
 
       <h2>New Campus Form</h2>
-      <Form />
+      <CampusForm />
     </>
   );
 };
