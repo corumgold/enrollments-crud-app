@@ -32,7 +32,7 @@ const StudentPage = () => {
   }, []);
 
   return (
-    <div>
+    <div className="flex-column center">
       <h1>
         {student.lastName}, {student.firstName}
       </h1>

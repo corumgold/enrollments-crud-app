@@ -13,7 +13,7 @@ const Campuses = () => {
 
 
   return (
-    <>
+    <div className="flex-column">
       {campuses.map((campus) => {
         let enrollments = students.filter(
           (student) => student?.campusId === campus.id
@@ -30,7 +30,6 @@ const Campuses = () => {
                 )
               </Link>
             </h2>
-            <img src={campus.imageUrl} alt="campus photo" />
             <p>
               {campus.description}{" "}
               <button onClick={() => dispatch(deleteCampus(campus))}>X</button>
@@ -41,7 +40,7 @@ const Campuses = () => {
 
       <h2>New Campus Form</h2>
       <CampusForm />
-    </>
+    </div>
   );
 };
 

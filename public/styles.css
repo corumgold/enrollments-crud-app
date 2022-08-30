@@ -1,3 +1,23 @@
+* {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.center {
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  display: flex;
+  max-width: 250px;
+}
+
 img {
-   max-width: 500px;
+  max-width: 500px;
 }

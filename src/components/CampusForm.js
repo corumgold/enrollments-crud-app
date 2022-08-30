@@ -57,41 +57,37 @@ const CampusForm = () => {
   }, []);
 
   return (
-    <div>
-      <form id="campus-form">
-        <label htmlFor="name">Name:</label>
-        <input
-          name="name"
-          value={campus.name || ""}
-          onChange={handleCampusName}
-        />
+    <form className="form flex-column">
+      <label htmlFor="name">Name:</label>
+      <input
+        name="name"
+        value={campus.name || ""}
+        onChange={handleCampusName}
+      />
 
-        <label htmlFor="address">Address:</label>
-        <input
-          name="address"
-          value={campus.address || ""}
-          onChange={handleCampusAddress}
-        />
+      <label htmlFor="address">Address:</label>
+      <input
+        name="address"
+        value={campus.address || ""}
+        onChange={handleCampusAddress}
+      />
 
-        <label htmlFor="description">Description:</label>
-        <input
-          name="description"
-          value={campus.description || ""}
-          onChange={handleCampusDescription}
-        />
+      <label htmlFor="description">Description:</label>
+      <textarea
+        name="description"
+        value={campus.description || ""}
+        onChange={handleCampusDescription}
+      />
 
-        <label htmlFor="imageUrl">Image URL:</label>
-        <input
-          name="imageUrl"
-          value={campus.imageUrl || ""}
-          onChange={handleCampusImage}
-        />
+      <label htmlFor="imageUrl">Image URL:</label>
+      <textarea
+        name="imageUrl"
+        value={campus.imageUrl || ""}
+        onChange={handleCampusImage}
+      />
 
-        <button onClick={handleSubmit}>
-          {newCampus ? "Create" : "Update"}
-        </button>
-      </form>
-    </div>
+      <button onClick={handleSubmit}>{newCampus ? "Create" : "Update"}</button>
+    </form>
   );
 };
 

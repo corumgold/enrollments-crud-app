@@ -64,7 +64,7 @@ const StudentForm = () => {
   }, []);
 
   return (
-    <form id="student-form">
+    <form className="form flex-column">
       <label htmlFor="firstName">First Name:</label>
       <input
         name="first Name"
@@ -90,7 +90,7 @@ const StudentForm = () => {
       <input name="gpa" value={student.gpa || ""} onChange={handleStudentGpa} />
 
       <label htmlFor="imageUrl">Image URL:</label>
-      <input
+      <textarea
         name="imageUrl"
         value={student.imageUrl || ""}
         onChange={handleStudentImage}

@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import CampusForm from "./CampusForm";
 import { updateStudent } from "../store/reducers/studentReducer";
 import { useDispatch } from "react-redux";
@@ -20,7 +20,6 @@ const CampusPage = () => {
 
   const handleUnenroll = (student) => {
     dispatch(updateStudent({ ...student, campusId: null }));
-    setCampus({ ...campus });
   };
 
   useEffect(() => {
@@ -32,7 +31,7 @@ const CampusPage = () => {
   }, []);
 
   return (
-    <div>
+    <div className="flex-column center">
       <h1>{campus.name}</h1>
       <p>{campus.address}</p>
       <img src={campus.imageUrl} alt="campus photo" />

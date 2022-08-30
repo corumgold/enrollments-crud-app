@@ -10,7 +10,7 @@ const Students = () => {
   const dispatch = useDispatch();
 
   return (
-    <>
+    <div className="flex-column">
       {students.map((student) => {
         const studentCampus = campuses.find(
           (campus) => campus.id === student.campusId
@@ -35,7 +35,7 @@ const Students = () => {
         );
       })}
       <StudentForm />
-    </>
+    </div>
   );
 };
 
