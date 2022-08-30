@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -6,16 +7,25 @@ import Form from "./Form";
 
 const CampusPage = () => {
   const params = useParams();
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  //Bring in campuses and students
-  const campuses = useSelector((state) => state.campuses);
-  const students = useSelector((state) => state.students);
-  const campus = campuses.find((campus) => campus.id === +params.campusId);
+  const campusDummy = {
+    name: "",
+    address: "",
+    imageUrl: "",
+    description: "",
+    students: [],
+  };
 
-  const campusStudents = students.filter(
-    (student) => student.campusId === campus.id
-  );
+  const [campus, setCampus] = useState(campusDummy);
+
+  useEffect(() => {
+    const getData = async () => {
+      const campusData = await axios.get(`/api/campuses/${params.campusId}`);
+      setCampus(campusData.data);
+    };
+    getData();
+  }, []);
 
   return (
     <div>
@@ -24,12 +34,12 @@ const CampusPage = () => {
       <img src={campus.imageUrl} alt="campus photo" />
       <p>{campus.description}</p>
 
-      <Form campusProp={campus} />
+      <Form />
 
       <h2>Enrollees</h2>
       <ul>
-        {campusStudents.length
-          ? campusStudents.map((student) => {
+        {campus.students.length
+          ? campus.students.map((student) => {
               return (
                 <li key={student.id}>
                   <Link to={`/students/${student.id}`}>

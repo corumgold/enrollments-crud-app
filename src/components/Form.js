@@ -1,11 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
 import { updateCampus } from "../store/reducers/campusReducer";
 
-const Form = ({ campusProp }) => {
+const Form = () => {
   const dispatch = useDispatch();
+  const params = useParams();
 
-  const [campus, setCampus] = useState(campusProp);
+  const campusDummy = {
+    name: "",
+    address: "",
+    imageUrl: "",
+    description: "",
+    students: [],
+  };
+
+  const [campus, setCampus] = useState(campusDummy);
 
   const handleCampusName = (e) => {
     setCampus({ ...campus, name: e.target.value });
@@ -28,7 +39,13 @@ const Form = ({ campusProp }) => {
     dispatch(updateCampus(campus));
   };
 
-  console.log(campus);
+  useEffect(() => {
+    const getData = async () => {
+      const campusData = await axios.get(`/api/campuses/${params.campusId}`);
+      setCampus(campusData.data);
+    };
+    getData();
+  }, []);
 
   return (
     <div>

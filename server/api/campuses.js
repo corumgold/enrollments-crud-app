@@ -1,5 +1,4 @@
 const router = require("express").Router();
-const { EvalDevToolModulePlugin } = require("webpack");
 const { Student, Campus } = require("../db");
 
 //GET /campuses
