@@ -1,65 +1,104 @@
-import React, { useState } from "react";
-import { createStudent, getStudents } from "../store/reducers/studentReducer";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import { useParams, useNavigate } from "react-router-dom";
+import { createStudent } from "../store/reducers/studentReducer";
 
 const StudentForm = () => {
-  // const campuses = useSelector((state) => state.campuses);
-
-  const [newStudent, setNewStudent] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    campusId: null,
-  });
-
   const dispatch = useDispatch();
+  const params = useParams();
+  const navigate = useNavigate();
 
-  const handleFirstName = (e) => {
-    setNewStudent({ ...newStudent, firstName: e.target.value });
+  //Check if form is for a new student or updating an existing
+  let newStudent = true;
+  if (params.studentId) newcampus = false;
+
+  const [student, setStudent] = useState({});
+  console.log(student)
+
+  const handleStudentFirstName = (e) => {
+    setStudent({ ...student, firstName: e.target.value });
   };
 
-  const handleLastName = (e) => {
-    setNewStudent({ ...newStudent, lastName: e.target.value });
+  const handleStudentLastName = (e) => {
+    setStudent({ ...student, lastName: e.target.value });
   };
 
-  const handleEmail = (e) => {
-    setNewStudent({ ...newStudent, email: e.target.value });
+  const handleStudentEmail = (e) => {
+    setStudent({ ...student, email: e.target.value });
   };
 
-  // const handleCampus = (e) => {
-  //   setNewStudent({ ...newStudent, campusId: e.target.value });
-  // };
+  const handleStudentGpa = (e) => {
+    setStudent({ ...student, gpa: e.target.value });
+  };
+
+  const handleStudentImage = (e) => {
+    setStudent({ ...student, imageUrl: e.target.value });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(createStudent(newStudent));
-    setNewStudent({
-      ...newStudent,
+    if (newStudent) {
+      dispatch(createStudent(student));
+    } else return;
+    //dispatch(updateStudent(student))
+    setStudent({
       firstName: "",
       lastName: "",
       email: "",
+      gpa: "",
+      imageUrl: "",
     });
-    dispatch(getStudents());
   };
 
+  useEffect(() => {
+    if (!newStudent) {
+      const getData = async () => {
+        const studentData = await axios.get(
+          `/api/students/${params.studentId}`
+        );
+        setStudent(studentData.data);
+      };
+      getData();
+    }
+  }, []);
+
   return (
-    <form id="student-form" onSubmit={handleSubmit}>
+    <form id="student-form">
       <label htmlFor="firstName">First Name:</label>
       <input
         name="first Name"
-        value={newStudent.firstName}
-        onChange={handleFirstName}
+        value={student.firstName || ""}
+        onChange={handleStudentFirstName}
       />
 
       <label htmlFor="lastName">Last Name:</label>
       <input
         name="last Name"
-        value={newStudent.lastName}
-        onChange={handleLastName}
+        value={student.lastName || ""}
+        onChange={handleStudentLastName}
       />
 
       <label htmlFor="email">Email:</label>
-      <input name="email" value={newStudent.email} onChange={handleEmail} />
+      <input
+        name="email"
+        value={student.email || ""}
+        onChange={handleStudentEmail}
+      />
+
+      <label htmlFor="gpa">GPA:</label>
+      <input
+        name="gpa"
+        value={student.gpa || ""}
+        onChange={handleStudentGpa}
+      />
+
+      <label htmlFor="imageUrl">Image URL:</label>
+      <input
+        name="imageUrl"
+        value={student.imageUrl || ""}
+        onChange={handleStudentImage}
+      />
 
       {/* <label htmlFor="campuses">Choose Campus:</label>
       <select onChange={handleCampus}>
@@ -73,7 +112,7 @@ const StudentForm = () => {
         })}
       </select> */}
 
-      <button type="submit">Submit</button>
+      <button onClick={handleSubmit}>{newStudent ? "Create" : "Update"}</button>
     </form>
   );
 };

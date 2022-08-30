@@ -1,7 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import CampusForm from "../../outofuse/CampusForm";
 import { deleteCampus } from "../store/reducers/campusReducer";
 import CampusForm from "./CampusForm";
 
