@@ -14,7 +14,6 @@ const StudentForm = () => {
   if (params.studentId) newStudent = false;
 
   const [student, setStudent] = useState({});
-  console.log(student);
 
   const handleStudentFirstName = (e) => {
     setStudent({ ...student, firstName: e.target.value });

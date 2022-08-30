@@ -6,14 +6,16 @@ import StudentForm from "./StudentForm";
 
 const Students = () => {
   const students = useSelector((state) => state.students);
+  const campuses = useSelector((state) => state.campuses);
   const dispatch = useDispatch();
-
-  //NEED TO FIX WEIRD ISSUE WHEN LINKING BACK HERE FROM UPDATED CAMPUSES
-
 
   return (
     <>
       {students.map((student) => {
+        const studentCampus = campuses.find(
+          (campus) => campus.id === student.campusId
+        );
+
         return (
           <div key={student.id}>
             <h2>
@@ -21,9 +23,7 @@ const Students = () => {
                 {student.lastName}, {student.firstName}
               </Link>{" "}
               - attends{" "}
-              {student.campus
-                ? student.campus.name
-                : "(student is not enrolled)"}
+              {studentCampus ? studentCampus.name : "(student is not enrolled)"}
             </h2>
             <p>
               {student.email}{" "}

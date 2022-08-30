@@ -1,13 +1,19 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import StudentForm from "./StudentForm";
 
 const StudentPage = () => {
   const params = useParams();
-  const students = useSelector((state) => state.students);
-  const student = students.find((student) => student.id === +params.studentId);
+
+  const [student, setStudent] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    gpa: "",
+    imageUrl: "",
+  });
 
   const schoolLink = (student) => {
     if (student.campusId) {
@@ -16,6 +22,14 @@ const StudentPage = () => {
       );
     } else return "This student is not registered in school";
   };
+
+  useEffect(() => {
+    const getData = async () => {
+      const studentData = await axios.get(`/api/students/${params.studentId}`);
+      setStudent({ ...studentData.data });
+    };
+    getData();
+  }, []);
 
   return (
     <div>
