@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import StudentForm from "./StudentForm";
 
 const StudentPage = () => {
   const params = useParams();
@@ -25,6 +26,8 @@ const StudentPage = () => {
       <p>GPA: {student.gpa ? student.gpa : "No GPA on file"}</p>
       <h2>Attends: {schoolLink(student)}</h2>
       <img src={student.imageUrl} alt="student photo" />
+
+      <StudentForm />
     </div>
   );
 };

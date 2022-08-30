@@ -3,6 +3,7 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 import { createStudent } from "../store/reducers/studentReducer";
+import { updateStudent } from "../store/reducers/studentReducer";
 
 const StudentForm = () => {
   const dispatch = useDispatch();
@@ -11,10 +12,10 @@ const StudentForm = () => {
 
   //Check if form is for a new student or updating an existing
   let newStudent = true;
-  if (params.studentId) newcampus = false;
+  if (params.studentId) newStudent = false;
 
   const [student, setStudent] = useState({});
-  console.log(student)
+  console.log(student);
 
   const handleStudentFirstName = (e) => {
     setStudent({ ...student, firstName: e.target.value });
@@ -40,8 +41,7 @@ const StudentForm = () => {
     e.preventDefault();
     if (newStudent) {
       dispatch(createStudent(student));
-    } else return;
-    //dispatch(updateStudent(student))
+    } else dispatch(updateStudent(student));
     setStudent({
       firstName: "",
       lastName: "",
@@ -87,11 +87,7 @@ const StudentForm = () => {
       />
 
       <label htmlFor="gpa">GPA:</label>
-      <input
-        name="gpa"
-        value={student.gpa || ""}
-        onChange={handleStudentGpa}
-      />
+      <input name="gpa" value={student.gpa || ""} onChange={handleStudentGpa} />
 
       <label htmlFor="imageUrl">Image URL:</label>
       <input

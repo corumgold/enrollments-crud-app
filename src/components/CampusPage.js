@@ -41,6 +41,11 @@ const CampusPage = () => {
                   <Link to={`/students/${student.id}`}>
                     {student.lastName}, {student.firstName}
                   </Link>
+                  {/* <button
+                    onClick={async () =>
+                      await student.update({ campusId: null })
+                    }
+                  >Unenroll</button> */}
                 </li>
               );
             })
