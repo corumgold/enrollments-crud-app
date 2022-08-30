@@ -1,8 +1,9 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import CampusForm from "./CampusForm";
+import CampusForm from "../../outofuse/CampusForm";
 import { deleteCampus } from "../store/reducers/campusReducer";
+import Form from "./Form";
 
 const Campuses = () => {
   const campuses = useSelector((state) => state.campuses);
@@ -13,7 +14,7 @@ const Campuses = () => {
     <>
       {campuses.map((campus) => {
         let enrollments = students.filter(
-          (student) => student.campusId === campus.id
+          (student) => student?.campusId === campus.id
         ).length;
 
         return (
@@ -37,7 +38,7 @@ const Campuses = () => {
       })}
 
       <h2>New Campus Form</h2>
-      <CampusForm />
+      <Form />
     </>
   );
 };

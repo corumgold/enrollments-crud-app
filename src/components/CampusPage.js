@@ -7,17 +7,14 @@ import Form from "./Form";
 
 const CampusPage = () => {
   const params = useParams();
-  // const dispatch = useDispatch();
 
-  const campusDummy = {
+  const [campus, setCampus] = useState({
     name: "",
     address: "",
     imageUrl: "",
     description: "",
     students: [],
-  };
-
-  const [campus, setCampus] = useState(campusDummy);
+  });
 
   useEffect(() => {
     const getData = async () => {

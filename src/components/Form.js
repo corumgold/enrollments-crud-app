@@ -2,21 +2,18 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { updateCampus } from "../store/reducers/campusReducer";
+import { createCampus, updateCampus } from "../store/reducers/campusReducer";
+import { Link } from "react-router-dom";
 
 const Form = () => {
   const dispatch = useDispatch();
   const params = useParams();
 
-  const campusDummy = {
-    name: "",
-    address: "",
-    imageUrl: "",
-    description: "",
-    students: [],
-  };
+  //Check if this form is for a new campus or updating an existing
+  let newCampus = true;
+  if (params.campusId) newCampus = false;
 
-  const [campus, setCampus] = useState(campusDummy);
+  const [campus, setCampus] = useState({});
 
   const handleCampusName = (e) => {
     setCampus({ ...campus, name: e.target.value });
@@ -36,41 +33,55 @@ const Form = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(updateCampus(campus));
+    if (newCampus) {
+      dispatch(createCampus(campus));
+    } else dispatch(updateCampus(campus));
+    setCampus({
+      name: "",
+      address: "",
+      description: "",
+      imageUrl: "",
+    });
   };
 
   useEffect(() => {
-    const getData = async () => {
-      const campusData = await axios.get(`/api/campuses/${params.campusId}`);
-      setCampus(campusData.data);
-    };
-    getData();
+    if (!newCampus) {
+      const getData = async () => {
+        const campusData = await axios.get(`/api/campuses/${params.campusId}`);
+        setCampus(campusData.data);
+      };
+      getData();
+    }
   }, []);
 
   return (
     <div>
       <form id="campus-form">
         <label htmlFor="name">Name:</label>
-        <input name="name" value={campus.name} onChange={handleCampusName} />
+        <input
+          name="name"
+          value={campus.name || ""}
+          onChange={handleCampusName}
+        />
 
         <label htmlFor="address">Address:</label>
         <input
           name="address"
-          value={campus.address}
+          value={campus.address || ""}
           onChange={handleCampusAddress}
         />
 
         <label htmlFor="description">Description:</label>
         <input
           name="description"
-          value={campus.description}
+          value={campus.description || ""}
           onChange={handleCampusDescription}
         />
 
         <label htmlFor="imageUrl">Image URL:</label>
         <input
           name="imageUrl"
-          value={campus.imageUrl}
+          value={campus.imageUrl || ""}
           onChange={handleCampusImage}
         />
 

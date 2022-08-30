@@ -2462,6 +2462,54 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./outofuse/CampusForm.js":
+/*!********************************!*\
+  !*** ./outofuse/CampusForm.js ***!
+  \********************************/
+/***/ (() => {
+
+// import React, { useState } from "react";
+// import { createCampus } from "../store/reducers/campusReducer";
+// import { useDispatch } from "react-redux";
+// const CampusForm = () => {
+//   const [newCampus, setNewCampus] = useState({
+//     name: "",
+//     address: "",
+//   });
+//   const dispatch = useDispatch();
+//   const handleCampusName = (e) => {
+//     setNewCampus({ ...newCampus, name: e.target.value });
+//   };
+//   const handleCampusAddress = (e) => {
+//     setNewCampus({ ...newCampus, address: e.target.value });
+//   };
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+//     dispatch(createCampus(newCampus));
+//     setNewCampus({
+//       ...newCampus,
+//       name: "",
+//       address: "",
+//     });
+//   };
+//   return (
+//     <form id="campus-form" onSubmit={handleSubmit}>
+//       <label htmlFor="name">Name:</label>
+//       <input name="name" value={newCampus.name} onChange={handleCampusName} />
+//       <label htmlFor="address">Address:</label>
+//       <input
+//         name="address"
+//         value={newCampus.address}
+//         onChange={handleCampusAddress}
+//       />
+//       <button type="submit">Submit</button>
+//     </form>
+//   );
+// };
+// export default CampusForm;
+
+/***/ }),
+
 /***/ "./src/App.js":
 /*!********************!*\
   !*** ./src/App.js ***!
@@ -2537,99 +2585,6 @@ function App() {
 
 /***/ }),
 
-/***/ "./src/components/CampusForm.js":
-/*!**************************************!*\
-  !*** ./src/components/CampusForm.js ***!
-  \**************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _store_reducers_campusReducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../store/reducers/campusReducer */ "./src/store/reducers/campusReducer.js");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-
-
-
-
-var CampusForm = function CampusForm() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
-    name: "",
-    address: ""
-  }),
-      _useState2 = _slicedToArray(_useState, 2),
-      newCampus = _useState2[0],
-      setNewCampus = _useState2[1];
-
-  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useDispatch)();
-
-  var handleCampusName = function handleCampusName(e) {
-    setNewCampus(_objectSpread(_objectSpread({}, newCampus), {}, {
-      name: e.target.value
-    }));
-  };
-
-  var handleCampusAddress = function handleCampusAddress(e) {
-    setNewCampus(_objectSpread(_objectSpread({}, newCampus), {}, {
-      address: e.target.value
-    }));
-  };
-
-  var handleSubmit = function handleSubmit(e) {
-    e.preventDefault();
-    dispatch((0,_store_reducers_campusReducer__WEBPACK_IMPORTED_MODULE_1__.createCampus)(newCampus));
-    setNewCampus(_objectSpread(_objectSpread({}, newCampus), {}, {
-      name: "",
-      address: ""
-    }));
-  };
-
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
-    id: "campus-form",
-    onSubmit: handleSubmit
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
-    htmlFor: "name"
-  }, "Name:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
-    name: "name",
-    value: newCampus.name,
-    onChange: handleCampusName
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
-    htmlFor: "address"
-  }, "Address:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
-    name: "address",
-    value: newCampus.address,
-    onChange: handleCampusAddress
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
-    type: "submit"
-  }, "Submit"));
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CampusForm);
-
-/***/ }),
-
 /***/ "./src/components/CampusPage.js":
 /*!**************************************!*\
   !*** ./src/components/CampusPage.js ***!
@@ -2677,17 +2632,15 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var CampusPage = function CampusPage() {
-  var params = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useParams)(); // const dispatch = useDispatch();
+  var params = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useParams)();
 
-  var campusDummy = {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({
     name: "",
     address: "",
     imageUrl: "",
     description: "",
     students: []
-  };
-
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(campusDummy),
+  }),
       _useState2 = _slicedToArray(_useState, 2),
       campus = _useState2[0],
       setCampus = _useState2[1];
@@ -2752,9 +2705,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
-/* harmony import */ var _CampusForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CampusForm */ "./src/components/CampusForm.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+/* harmony import */ var _outofuse_CampusForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../outofuse/CampusForm */ "./outofuse/CampusForm.js");
+/* harmony import */ var _outofuse_CampusForm__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_outofuse_CampusForm__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _store_reducers_campusReducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../store/reducers/campusReducer */ "./src/store/reducers/campusReducer.js");
+/* harmony import */ var _Form__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Form */ "./src/components/Form.js");
+
 
 
 
@@ -2771,11 +2727,11 @@ var Campuses = function Campuses() {
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, campuses.map(function (campus) {
     var enrollments = students.filter(function (student) {
-      return student.campusId === campus.id;
+      return (student === null || student === void 0 ? void 0 : student.campusId) === campus.id;
     }).length;
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       key: campus.id
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
       to: "/campuses/".concat(campus.id)
     }, campus.name, " (", enrollments, !enrollments || enrollments > 1 ? " Enrollments" : " Enrollment", ")")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
       src: campus.imageUrl,
@@ -2785,7 +2741,7 @@ var Campuses = function Campuses() {
         return dispatch((0,_store_reducers_campusReducer__WEBPACK_IMPORTED_MODULE_3__.deleteCampus)(campus));
       }
     }, "X")));
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "New Campus Form"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_CampusForm__WEBPACK_IMPORTED_MODULE_2__["default"], null));
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "New Campus Form"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Form__WEBPACK_IMPORTED_MODULE_4__["default"], null));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Campuses);
@@ -2842,18 +2798,15 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var Form = function Form() {
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useDispatch)();
-  var params = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useParams)();
-  var campusDummy = {
-    name: "",
-    address: "",
-    imageUrl: "",
-    description: "",
-    students: []
-  };
+  var params = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useParams)(); //Check if this form is for a new campus or updating an existing
 
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(campusDummy),
+  var newCampus = true;
+  if (params.campusId) newCampus = false;
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
       _useState2 = _slicedToArray(_useState, 2),
       campus = _useState2[0],
       setCampus = _useState2[1];
@@ -2884,38 +2837,50 @@ var Form = function Form() {
 
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
-    dispatch((0,_store_reducers_campusReducer__WEBPACK_IMPORTED_MODULE_3__.updateCampus)(campus));
+
+    if (newCampus) {
+      dispatch((0,_store_reducers_campusReducer__WEBPACK_IMPORTED_MODULE_3__.createCampus)(campus));
+    } else dispatch((0,_store_reducers_campusReducer__WEBPACK_IMPORTED_MODULE_3__.updateCampus)(campus));
+
+    setCampus({
+      name: "",
+      address: "",
+      description: "",
+      imageUrl: ""
+    });
   };
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    var getData = /*#__PURE__*/function () {
-      var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-        var campusData;
-        return _regeneratorRuntime().wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _context.next = 2;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/campuses/".concat(params.campusId));
+    if (!newCampus) {
+      var getData = /*#__PURE__*/function () {
+        var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+          var campusData;
+          return _regeneratorRuntime().wrap(function _callee$(_context) {
+            while (1) {
+              switch (_context.prev = _context.next) {
+                case 0:
+                  _context.next = 2;
+                  return axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/campuses/".concat(params.campusId));
 
-              case 2:
-                campusData = _context.sent;
-                setCampus(campusData.data);
+                case 2:
+                  campusData = _context.sent;
+                  setCampus(campusData.data);
 
-              case 4:
-              case "end":
-                return _context.stop();
+                case 4:
+                case "end":
+                  return _context.stop();
+              }
             }
-          }
-        }, _callee);
-      }));
+          }, _callee);
+        }));
 
-      return function getData() {
-        return _ref.apply(this, arguments);
-      };
-    }();
+        return function getData() {
+          return _ref.apply(this, arguments);
+        };
+      }();
 
-    getData();
+      getData();
+    }
   }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
     id: "campus-form"
@@ -2923,25 +2888,25 @@ var Form = function Form() {
     htmlFor: "name"
   }, "Name:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     name: "name",
-    value: campus.name,
+    value: campus.name || "",
     onChange: handleCampusName
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "address"
   }, "Address:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     name: "address",
-    value: campus.address,
+    value: campus.address || "",
     onChange: handleCampusAddress
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "description"
   }, "Description:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     name: "description",
-    value: campus.description,
+    value: campus.description || "",
     onChange: handleCampusDescription
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "imageUrl"
   }, "Image URL:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     name: "imageUrl",
-    value: campus.imageUrl,
+    value: campus.imageUrl || "",
     onChange: handleCampusImage
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     type: "submit",
