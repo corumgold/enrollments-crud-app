@@ -1,38 +1,53 @@
+@background-color: #fffcf2;
+@primary-color: #284b63;
+@secondary-color: #3c6e71;
+@accent-color: #eb5e28;
+@text-color: #353535;
+@second-text-color: #d9d9d9;
+
 * {
   font-family: "Montserrat", sans-serif;
 }
+
 body {
-  color: #353535;
+  color: @text-color;
   line-height: 1.5rem;
-  background-color: #fffcf2;
+  background-color: @background-color;
 }
+
 main {
   display: flex;
 }
+
 .list {
   flex: 2 1 0;
 }
+
 .flex-column {
   display: flex;
   flex-direction: column;
 }
+
 .center {
   justify-content: center;
   align-items: center;
 }
+
 .form {
   display: flex;
   flex: 1 1 0;
-  background-color: #284b63;
+  background-color: @primary-color;
   padding: 1.5rem;
-  border: 8px solid #3c6e71;
+  border: 8px solid @secondary-color;
   border-radius: 10px;
-  color: #d9d9d9;
+  color: @second-text-color;
 }
+
 .form label {
-  color: #d9d9d9;
+  color: @second-text-color;
   margin: 5px 0;
 }
+
 img {
   max-width: 500px;
 }

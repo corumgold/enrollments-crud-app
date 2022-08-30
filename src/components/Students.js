@@ -10,32 +10,36 @@ const Students = () => {
   const dispatch = useDispatch();
 
   return (
-    <div className="flex-column">
-      {students.map((student) => {
-        const studentCampus = campuses.find(
-          (campus) => campus.id === student.campusId
-        );
+    <main>
+      <div className="list flex-column">
+        {students.map((student) => {
+          const studentCampus = campuses.find(
+            (campus) => campus.id === student.campusId
+          );
 
-        return (
-          <div key={student.id}>
-            <h2>
-              <Link to={`/students/${student.id}`}>
-                {student.lastName}, {student.firstName}
-              </Link>{" "}
-              - attends{" "}
-              {studentCampus ? studentCampus.name : "(student is not enrolled)"}
-            </h2>
-            <p>
-              {student.email}{" "}
-              <button onClick={() => dispatch(deleteStudent(student))}>
-                X
-              </button>
-            </p>
-          </div>
-        );
-      })}
+          return (
+            <div key={student.id}>
+              <h2>
+                <Link to={`/students/${student.id}`}>
+                  {student.lastName}, {student.firstName}
+                </Link>{" "}
+                <button onClick={() => dispatch(deleteStudent(student))}>
+                  X
+                </button>
+              </h2>
+              <h3>{student.email}</h3>
+              <p>
+                Attends:{" "}
+                {studentCampus
+                  ? studentCampus.name
+                  : "(student is not enrolled)"}
+              </p>
+            </div>
+          );
+        })}
+      </div>
       <StudentForm />
-    </div>
+    </main>
   );
 };
 

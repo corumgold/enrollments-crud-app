@@ -9,38 +9,35 @@ const Campuses = () => {
   const students = useSelector((state) => state.students);
   const dispatch = useDispatch();
 
-
-
-
   return (
-    <div className="flex-column">
-      {campuses.map((campus) => {
-        let enrollments = students.filter(
-          (student) => student?.campusId === campus.id
-        ).length;
+    <main>
+      <div className="list flex-column">
+        {campuses.map((campus) => {
+          let enrollments = students.filter(
+            (student) => student?.campusId === campus.id
+          ).length;
 
-        return (
-          <div key={campus.id}>
-            <h2>
-              <Link to={`/campuses/${campus.id}`}>
-                {campus.name} ({enrollments}
-                {!enrollments || enrollments > 1
-                  ? " Enrollments"
-                  : " Enrollment"}
-                )
-              </Link>
-            </h2>
-            <p>
-              {campus.description}{" "}
-              <button onClick={() => dispatch(deleteCampus(campus))}>X</button>
-            </p>
-          </div>
-        );
-      })}
-
-      <h2>New Campus Form</h2>
+          return (
+            <div key={campus.id}>
+              <h2>
+                <Link to={`/campuses/${campus.id}`}>
+                  {campus.name} ({enrollments}
+                  {!enrollments || enrollments > 1
+                    ? " Enrollments"
+                    : " Enrollment"}
+                  )
+                </Link>{" "}
+                <button onClick={() => dispatch(deleteCampus(campus))}>
+                  X
+                </button>
+              </h2>
+              <p>{campus.description}</p>
+            </div>
+          );
+        })}
+      </div>
       <CampusForm />
-    </div>
+    </main>
   );
 };
 
