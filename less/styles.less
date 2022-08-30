@@ -13,10 +13,35 @@ body {
   color: @text-color;
   line-height: 1.5rem;
   background-color: @background-color;
+  margin: 0;
+}
+
+nav {
+  background-color: #284b63;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+nav * {
+  color: @second-text-color;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 1.5rem;
+}
+
+nav * :hover {
+  color: #eb5e28;
+  transition: 200ms;
+}
+
+.home {
+  height: 90vh;
+  
 }
 
 main {
   display: flex;
+  text-align: center;
 }
 
 .list {

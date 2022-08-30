@@ -5,9 +5,29 @@ body {
   color: #353535;
   line-height: 1.5rem;
   background-color: #fffcf2;
+  margin: 0;
+}
+nav {
+  background-color: #284b63;
+  display: flex;
+  justify-content: space-evenly;
+}
+nav * {
+  color: #d9d9d9;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 1.5rem;
+}
+nav * :hover {
+  color: #eb5e28;
+  transition: 200ms;
+}
+.home {
+  height: 90vh;
 }
 main {
   display: flex;
+  text-align: center;
 }
 .list {
   flex: 2 1 0;

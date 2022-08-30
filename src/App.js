@@ -24,15 +24,16 @@ function App() {
   return (
     <>
       <div>
-        <nav>
-          <Link to={"/"}>
-            <button>Home</button>
-          </Link>
+        <nav id="navigation">
           <Link to={"/students"}>
-            <button>Students ({students.length})</button>
+            <p>Students ({students.length})</p>
           </Link>
+          <Link to={"/"}>
+            <p>Home</p>
+          </Link>
+
           <Link to={"/campuses"}>
-            <button>Campuses ({campuses.length})</button>
+            <p>Campuses ({campuses.length})</p>
           </Link>
         </nav>
       </div>
