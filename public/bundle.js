@@ -2551,6 +2551,9 @@ function App() {
   });
   var students = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
     return state.students;
+  });
+  var state = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
+    return state;
   }); //Load campuses and students on app load
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
@@ -3445,7 +3448,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
  //ACTION TYPES
 
 var SET_STUDENTS = "SET_STUDENTS";
-var CREATE_STUDENT = "CREATE_CAMPUS";
+var CREATE_STUDENT = "CREATE_STUDENT";
 var DELETE_STUDENT = "DELETE_STUDENT"; //ACTION CREATORS
 
 var _setStudents = function _setStudents(students) {

@@ -13,6 +13,7 @@ function App() {
   const dispatch = useDispatch();
   const campuses = useSelector((state) => state.campuses);
   const students = useSelector((state) => state.students);
+  const state = useSelector((state) => state);
 
   //Load campuses and students on app load
   useEffect(() => {
