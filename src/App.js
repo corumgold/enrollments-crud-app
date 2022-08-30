@@ -26,14 +26,14 @@ function App() {
       <div>
         <nav id="navigation">
           <Link to={"/students"}>
-            <p>Students ({students.length})</p>
+            <p>STUDENTS ({students.length})</p>
           </Link>
           <Link to={"/"}>
-            <p>Home</p>
+            <p>HOME</p>
           </Link>
 
           <Link to={"/campuses"}>
-            <p>Campuses ({campuses.length})</p>
+            <p>CAMPUSES ({campuses.length})</p>
           </Link>
         </nav>
       </div>

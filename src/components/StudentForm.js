@@ -90,7 +90,7 @@ const StudentForm = () => {
       <input name="gpa" value={student.gpa || ""} onChange={handleStudentGpa} />
 
       <label htmlFor="imageUrl">Image URL:</label>
-      <textarea
+      <input
         name="imageUrl"
         value={student.imageUrl || ""}
         onChange={handleStudentImage}

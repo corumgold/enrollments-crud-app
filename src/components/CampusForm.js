@@ -80,7 +80,7 @@ const CampusForm = () => {
       />
 
       <label htmlFor="imageUrl">Image URL:</label>
-      <textarea
+      <input
         name="imageUrl"
         value={campus.imageUrl || ""}
         onChange={handleCampusImage}

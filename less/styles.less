@@ -5,15 +5,27 @@
 @text-color: #353535;
 @second-text-color: #d9d9d9;
 
+@very-large-font: 3rem;
+@large-font: 2rem;
+@medium-font: 1.5rem;
+@small-font: 1rem;
+
 * {
   font-family: "Montserrat", sans-serif;
 }
 
 body {
   color: @text-color;
-  line-height: 1.5rem;
+  line-height: 2rem;
   background-color: @background-color;
   margin: 0;
+}
+
+button {
+  background: none;
+  cursor: pointer;
+  padding: 8px;
+  border: 2px solid @text-color;
 }
 
 nav {
@@ -26,26 +38,38 @@ nav * {
   color: @second-text-color;
   font-weight: 600;
   text-decoration: none;
-  font-size: 1.5rem;
+  font-size: @medium-font;
 }
 
-nav * :hover {
+nav * :hover,
+.list h2 {
   color: #eb5e28;
   transition: 200ms;
 }
 
 .home {
   height: 90vh;
-  
-}
-
-main {
   display: flex;
   text-align: center;
 }
 
+main {
+  display: flex;
+  margin: 1.5rem;
+}
+
 .list {
   flex: 2 1 0;
+  margin: 1rem;
+}
+
+.list h2 {
+  font-size: @large-font;
+}
+
+.list h2 a {
+  text-decoration: none;
+  color: @secondary-color;
 }
 
 .flex-column {
@@ -66,6 +90,7 @@ main {
   border: 8px solid @secondary-color;
   border-radius: 10px;
   color: @second-text-color;
+  max-height: 450px;
 }
 
 .form label {

@@ -23,9 +23,6 @@ const Students = () => {
                 <Link to={`/students/${student.id}`}>
                   {student.lastName}, {student.firstName}
                 </Link>{" "}
-                <button onClick={() => dispatch(deleteStudent(student))}>
-                  X
-                </button>
               </h2>
               <h3>{student.email}</h3>
               <p>
@@ -34,6 +31,9 @@ const Students = () => {
                   ? studentCampus.name
                   : "(student is not enrolled)"}
               </p>
+              <button onClick={() => dispatch(deleteStudent(student))}>
+                Delete Student
+              </button>
             </div>
           );
         })}

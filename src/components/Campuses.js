@@ -26,12 +26,10 @@ const Campuses = () => {
                     ? " Enrollments"
                     : " Enrollment"}
                   )
-                </Link>{" "}
-                <button onClick={() => dispatch(deleteCampus(campus))}>
-                  X
-                </button>
+                </Link>
               </h2>
-              <p>{campus.description}</p>
+              <button onClick={() => dispatch(deleteCampus(campus))}>Delete School</button>
+              <p>{campus.description} </p>
             </div>
           );
         })}
