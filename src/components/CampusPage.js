@@ -2,14 +2,20 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { updateCampus, getCampuses } from "../store/reducers/campusReducer";
+import { updateCampus} from "../store/reducers/campusReducer";
 
 const CampusPage = () => {
   const params = useParams();
   const dispatch = useDispatch();
+
   const campuses = useSelector((state) => state.campuses);
+  const students = useSelector((state) => state.students);
 
   const [campus, setCampus] = useState({});
+
+  const campusStudents = students.filter(
+    (student) => student.campusId === campus.id
+  );
 
   const handleCampusName = (e) => {
     setCampus({ ...campus, name: e.target.value });
@@ -33,7 +39,7 @@ const CampusPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(updateCampus(campus));
+    dispatch(updateCampus({ ...campus, students: [...students] }));
   };
 
   return (
@@ -43,7 +49,7 @@ const CampusPage = () => {
       <img src={campus.imageUrl} alt="campus photo" />
       <p>{campus.description}</p>
 
-      <form id="campus-form" onSubmit={handleSubmit}>
+      <form id="campus-form">
         <label htmlFor="name">Name:</label>
         <input name="name" value={campus.name} onChange={handleCampusName} />
 
@@ -68,13 +74,15 @@ const CampusPage = () => {
           onChange={handleCampusImage}
         />
 
-        <button type="submit">Submit</button>
+        <button type="submit" onClick={handleSubmit}>
+          Submit
+        </button>
       </form>
 
       <h2>Enrollees</h2>
       <ul>
-        {campus.students?.length
-          ? campus.students.map((student) => {
+        {campusStudents.length
+          ? campusStudents.map((student) => {
               return (
                 <li key={student.id}>
                   <Link to={`/students/${student.id}`}>

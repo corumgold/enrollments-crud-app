@@ -6,15 +6,15 @@ import { deleteCampus } from "../store/reducers/campusReducer";
 
 const Campuses = () => {
   const campuses = useSelector((state) => state.campuses);
+  const students = useSelector((state) => state.students);
   const dispatch = useDispatch();
 
   return (
     <>
       {campuses.map((campus) => {
-        let enrollments = 0;
-        if (campus.students) {
-          enrollments = campus.students.length;
-        }
+        let enrollments = students.filter(
+          (student) => student.campusId === campus.id
+        ).length;
 
         return (
           <div key={campus.id}>

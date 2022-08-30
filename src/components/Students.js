@@ -8,6 +8,9 @@ const Students = () => {
   const students = useSelector((state) => state.students);
   const dispatch = useDispatch();
 
+  //NEED TO FIX WEIRD ISSUE WHEN LINKING BACK HERE FROM UPDATED CAMPUSES
+
+
   return (
     <>
       {students.map((student) => {
