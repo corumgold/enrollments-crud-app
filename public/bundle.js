@@ -2941,7 +2941,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-
 var StudentForm = function StudentForm() {
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useDispatch)();
   var params = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useParams)();
@@ -3001,6 +3000,7 @@ var StudentForm = function StudentForm() {
       gpa: "",
       imageUrl: ""
     });
+    navigate("/students");
   };
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {

@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
-import { createStudent } from "../store/reducers/studentReducer";
-import { updateStudent } from "../store/reducers/studentReducer";
+import { createStudent, updateStudent } from "../store/reducers/studentReducer";
 
 const StudentForm = () => {
   const dispatch = useDispatch();
@@ -49,6 +48,7 @@ const StudentForm = () => {
       gpa: "",
       imageUrl: "",
     });
+    navigate("/students");
   };
 
   useEffect(() => {
