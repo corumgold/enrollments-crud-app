@@ -2852,7 +2852,7 @@ var Form = function Form() {
       description: "",
       imageUrl: ""
     });
-    navigate('/campuses');
+    navigate("/campuses");
   };
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
@@ -2915,7 +2915,7 @@ var Form = function Form() {
     onChange: handleCampusImage
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     onClick: handleSubmit
-  }, "Submit")));
+  }, newCampus ? "Create" : "Update")));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Form);

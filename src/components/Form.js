@@ -43,7 +43,7 @@ const Form = () => {
       description: "",
       imageUrl: "",
     });
-    navigate('/campuses')
+    navigate("/campuses");
   };
 
   useEffect(() => {
@@ -87,7 +87,9 @@ const Form = () => {
           onChange={handleCampusImage}
         />
 
-        <button onClick={handleSubmit}>Submit</button>
+        <button onClick={handleSubmit}>
+          {newCampus ? "Create" : "Update"}
+        </button>
       </form>
     </div>
   );
