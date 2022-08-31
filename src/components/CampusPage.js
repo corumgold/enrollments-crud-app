@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 const CampusPage = () => {
   const params = useParams();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [campus, setCampus] = useState({
     name: "",
@@ -20,6 +21,7 @@ const CampusPage = () => {
 
   const handleUnenroll = (student) => {
     dispatch(updateStudent({ ...student, campusId: null }));
+    navigate(`/students/${student.id}`);
   };
 
   useEffect(() => {

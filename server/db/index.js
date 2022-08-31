@@ -11,8 +11,6 @@ Campus.hasMany(Student);
 
 const syncAndSeed = async () => {
   await db.sync({ force: true });
-
-  //use this area to sync your database
   seed();
 };
 

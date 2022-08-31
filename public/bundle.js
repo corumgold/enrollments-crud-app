@@ -2769,6 +2769,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var CampusPage = function CampusPage() {
   var params = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useParams)();
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_4__.useDispatch)();
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useNavigate)();
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({
     name: "",
@@ -2785,6 +2786,7 @@ var CampusPage = function CampusPage() {
     dispatch((0,_store_reducers_studentReducer__WEBPACK_IMPORTED_MODULE_3__.updateStudent)(_objectSpread(_objectSpread({}, student), {}, {
       campusId: null
     })));
+    navigate("/students/".concat(student.id));
   };
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
