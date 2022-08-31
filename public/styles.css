@@ -33,9 +33,28 @@ nav * :hover,
   transition: 200ms;
 }
 .home {
-  height: 90vh;
+  height: 80vh;
   display: flex;
   text-align: center;
+  padding: 2rem;
+}
+.home h1 {
+  font-size: 3rem;
+  margin: 1rem;
+}
+.home h2 {
+  font-size: 2rem;
+  margin: 1rem;
+  font-style: italic;
+}
+.home h3 {
+  font-size: 1.5rem;
+  margin: 0.5rem;
+  font-style: italic;
+}
+.home p {
+  font-size: 1.5rem;
+  margin: 1rem;
 }
 main {
   display: flex;
@@ -80,6 +99,7 @@ main {
   flex: 1 1 0;
   background-color: #284b63;
   padding: 1.5rem;
+  margin: 1rem;
   border: 8px solid #3c6e71;
   border-radius: 10px;
   color: #d9d9d9;
