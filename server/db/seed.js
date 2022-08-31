@@ -43,7 +43,7 @@ const seed = async () => {
   await Campus.create({
     name: "New Jersey City University",
     imageUrl:
-      "https://www.bcj.com/wp-content/uploads/2018/05/ANSYS_CC_4362_medium.jpg",
+      "https://www.njcu.edu/sites/default/files/styles/ifde_wysiwyg__natural/public/images/2019-02/NJCU%20Campus%20from%20Drone.jpg?itok=pbsTc3Xy",
     address: "2039 John F. Kennedy Blvd, Jersey City, NJ 07305",
     description:
       "Originally chartered in 1927, and known as Jersey City State College for 40 years of its history, New Jersey City University consists of the School of Business, College of Arts and Sciences, College of Education, and College of Professional Studies. NJCU enrolls over 8,500 students and is part of New Jersey's public system of higher education.",
@@ -108,6 +108,26 @@ const seed = async () => {
       "https://thumbs.dreamstime.com/b/happy-young-woman-smiling-girl-white-t-shirt-portrait-happy-young-woman-smiling-girl-white-t-shirt-portrait-136240232.jpg",
     gpa: 3.22,
     campusId: 5,
+  });
+
+  await Student.create({
+    firstName: "Helen",
+    lastName: "Hywater",
+    email: "h.hywater99@hotmail.com",
+    imageUrl:
+      "https://as1.ftcdn.net/v2/jpg/02/46/06/42/1000_F_246064221_th9lHwz9CREm64OZHBLxkfM20MHS2c3m.jpg",
+    gpa: 3.77,
+    campusId: 3,
+  });
+
+  await Student.create({
+    firstName: "Chester",
+    lastName: "Minit",
+    email: "holdonasec72@gmail.com",
+    imageUrl:
+      "https://www.dutimes.com/wp-content/uploads/2019/01/word-image-2.jpeg",
+    gpa: 3.89,
+    campusId: 4,
   });
 
   console.log(`

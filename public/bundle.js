@@ -3028,7 +3028,6 @@ var StudentForm = function StudentForm() {
 
   var handleStudentCampus = function handleStudentCampus(e) {
     var campusNum = Number(e.target.value);
-    console.log(campusNum);
     setStudent(_objectSpread(_objectSpread({}, student), {}, {
       campusId: campusNum
     }));

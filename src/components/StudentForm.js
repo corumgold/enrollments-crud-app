@@ -39,7 +39,6 @@ const StudentForm = () => {
 
   const handleStudentCampus = (e) => {
     let campusNum = Number(e.target.value)
-    console.log(campusNum)
     setStudent({ ...student, campusId: campusNum });
   };
 
