@@ -68,7 +68,7 @@ main {
 
 .list-item {
   margin: 8px;
-  padding: 8px;
+  padding: 12px;
   border: 2px solid @primary-color;
   border-radius: 10px;
 }
@@ -103,18 +103,31 @@ main {
 
 .form {
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex: 1 1 0;
   background-color: @primary-color;
   padding: 1.5rem;
   border: 8px solid @secondary-color;
   border-radius: 10px;
   color: @second-text-color;
-  max-height: 450px;
+  max-height: 400px;
 }
 
 .form label {
   color: @second-text-color;
   margin: 5px 0;
+  align-self: baseline;
+}
+
+.form input, .form textarea {
+  align-self: baseline;
+  width: 100%;
+}
+
+.form button {
+  margin: 1rem;
+  width: 5rem;
 }
 
 img {
