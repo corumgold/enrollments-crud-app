@@ -65,6 +65,7 @@ const StudentForm = () => {
 
   return (
     <form className="form flex-column">
+      <h2>{newStudent ? "Create New Student" : "Update Student"}</h2>
       <label htmlFor="firstName">First Name:</label>
       <input
         name="first Name"

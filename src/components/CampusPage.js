@@ -33,7 +33,7 @@ const CampusPage = () => {
   }, []);
 
   return (
-    <div className="single-pageflex-column center">
+    <div className="single-page flex-column center">
       <section className="single-header">
         <div className="info flex-column center">
           <h1>{campus.name}</h1>

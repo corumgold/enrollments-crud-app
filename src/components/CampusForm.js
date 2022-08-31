@@ -58,6 +58,7 @@ const CampusForm = () => {
 
   return (
     <form className="form flex-column">
+      <h2>{newCampus ? "Create New Campus" : "Update Campus"}</h2>
       <label htmlFor="name">Name:</label>
       <input
         name="name"
