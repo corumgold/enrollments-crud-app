@@ -100,7 +100,7 @@ main {
 .single-header img {
   object-fit: cover;
   width: 250px;
-  height: auto;
+  height: 250px;
   border: 8px solid #3c6e71;
   border-radius: 10px;
 }
