@@ -117,7 +117,13 @@ main {
 }
 .form button {
   margin: 1rem;
-  width: 5rem;
+  padding: 8px;
+  font-size: 1.5rem;
+}
+.form button:hover {
+  background-color: #a7c957;
+  color: #353535;
+  transition: 200ms;
 }
 img {
   max-width: 500px;
