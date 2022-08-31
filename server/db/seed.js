@@ -6,12 +6,12 @@ const seed = async () => {
   // CAMPUSES
 
   await Campus.create({
-    name: "University of Tennessee",
+    name: "Fullstack Academy",
     imageUrl:
-      "https://media-exp1.licdn.com/dms/image/C4D1BAQFz8kP2v7zASA/company-background_10000/0/1519799634774?e=2147483647&v=beta&t=TosW85pSJELKzC57ri7Gn2omEFEKI-h_B5Qom4PTLCI",
-    address: "615 McCallie Ave, Chattanooga, TN 37402",
+      "https://coursereport-s3-production.global.ssl.fastly.net/rich/rich_files/rich_files/646/s1200/fsa-20campus-207.jpg",
+    address: "5 Hanover Square 11th floor, New York, NY 10004",
     description:
-      "The University of Tennessee at Chattanooga is a public university in Chattanooga, Tennessee. It is one of four universities and two other affiliated institutions in the University of Tennessee System.",
+      "Fullstack Academy is an immersive software engineering coding bootcamp located in New York City. Students of the full-time flagship course learn full stack JavaScript over the course of a 13-week, on-campus program.",
   });
 
   await Campus.create({
@@ -38,15 +38,6 @@ const seed = async () => {
     address: "New York, NY 10012",
     description:
       "New York University is a private research university in New York City. Chartered in 1831 by the New York State Legislature, NYU was founded by a group of New Yorkers led by then-Secretary of the Treasury Albert Gallatin.",
-  });
-
-  await Campus.create({
-    name: "Carnegie Mellon University",
-    imageUrl:
-      "https://www.bcj.com/wp-content/uploads/2018/05/ANSYS_CC_4362_medium.jpg",
-    address: "5000 Forbes Ave, Pittsburgh, PA 15213",
-    description:
-      "Carnegie Mellon University is a private research university based in Pittsburgh, Pennsylvania. The university is the result of a merger of the Carnegie Institute of Technology and the Mellon Institute of Industrial Research.",
   });
 
   await Campus.create({
@@ -113,9 +104,10 @@ const seed = async () => {
     firstName: "Dinah",
     lastName: "Mite",
     email: "kaboomgal@gmail.com",
-    imageUrl: "https://thumbs.dreamstime.com/b/happy-young-woman-smiling-girl-white-t-shirt-portrait-happy-young-woman-smiling-girl-white-t-shirt-portrait-136240232.jpg",
+    imageUrl:
+      "https://thumbs.dreamstime.com/b/happy-young-woman-smiling-girl-white-t-shirt-portrait-happy-young-woman-smiling-girl-white-t-shirt-portrait-136240232.jpg",
     gpa: 3.22,
-    campusId: 6,
+    campusId: 5,
   });
 
   console.log(`

@@ -15,6 +15,10 @@ const Home = () => {
         modify, and delete school campuses as well as students. Users are also
         able to assign students to different schools.
       </p>
+      <p>
+        Fun fact: Each of the campuses listed in the seed file is an actual
+        school that I have attended!
+      </p>
     </div>
   );
 };

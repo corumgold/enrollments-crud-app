@@ -142,6 +142,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
   flex: 1 1 0;
   background-color: #284b63;
   padding: 1.5rem;
@@ -149,7 +150,7 @@ main {
   border: 8px solid #3c6e71;
   border-radius: 10px;
   color: #d9d9d9;
-  max-height: 400px;
+  max-height: 450px;
 }
 .form h2 {
   margin: 0;
