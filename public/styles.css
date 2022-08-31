@@ -80,17 +80,62 @@ main {
   text-decoration: none;
   color: #3c6e71;
 }
-.list-item button:hover {
+.list-item button:hover,
+.enrollees button:hover {
   background-color: #e63946;
   transition: 200ms;
+}
+.single-page form {
+  min-width: 500px;
+}
+.single-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.single-header > * {
+  margin: 1rem;
+  flex: 1 1 0;
+}
+.single-header img {
+  object-fit: cover;
+  width: 250px;
+  height: auto;
+  border: 8px solid #3c6e71;
+  border-radius: 10px;
+}
+.info {
+  border: 2px solid #284b63;
+  border-radius: 10px;
+}
+.info * {
+  margin: 0.5rem;
+}
+.enrollees {
+  border: 2px solid #284b63;
+  border-radius: 10px;
+  margin: 1rem;
+}
+.enrollees * {
+  margin: 0.5rem;
+}
+.enrollees button {
+  margin-right: 2rem;
+  margin-left: 0.5rem;
 }
 .flex-column {
   display: flex;
   flex-direction: column;
 }
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
 .center {
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 .form {
   display: flex;
@@ -124,7 +169,4 @@ main {
   background-color: #a7c957;
   color: #353535;
   transition: 200ms;
-}
-img {
-  max-width: 500px;
 }

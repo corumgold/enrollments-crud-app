@@ -31,31 +31,36 @@ const CampusPage = () => {
   }, []);
 
   return (
-    <div className="flex-column center">
-      <h1>{campus.name}</h1>
-      <p>{campus.address}</p>
-      <img src={campus.imageUrl} alt="campus photo" />
-      <p>{campus.description}</p>
+    <div className="single-pageflex-column center">
+      <section className="single-header">
+        <div className="info flex-column center">
+          <h1>{campus.name}</h1>
+          <p>{campus.address}</p>
+          <p>{campus.description}</p>
+        </div>
+        <img src={campus.imageUrl} alt="campus photo" />
+      </section>
 
+      <div className="enrollees flex-column">
+        <h2>Enrollees</h2>
+        <div className="enrollee-list flex-row center">
+          {campus.students.length
+            ? campus.students.map((student) => {
+                return (
+                  <h3 key={student.id}>
+                    <Link to={`/students/${student.id}`}>
+                      {student.lastName}, {student.firstName}
+                    </Link>
+                    <button onClick={() => handleUnenroll(student)}>
+                      Unenroll
+                    </button>
+                  </h3>
+                );
+              })
+            : "There are no enrollees!"}
+        </div>
+      </div>
       <CampusForm />
-
-      <h2>Enrollees</h2>
-      <ul>
-        {campus.students.length
-          ? campus.students.map((student) => {
-              return (
-                <li key={student.id}>
-                  <Link to={`/students/${student.id}`}>
-                    {student.lastName}, {student.firstName}
-                  </Link>
-                  <button onClick={() => handleUnenroll(student)}>
-                    Unenroll
-                  </button>
-                </li>
-              );
-            })
-          : "There are no enrollees!"}
-      </ul>
     </div>
   );
 };

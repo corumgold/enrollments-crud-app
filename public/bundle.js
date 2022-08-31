@@ -2818,12 +2818,20 @@ var CampusPage = function CampusPage() {
     getData();
   }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
-    className: "flex-column center"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("h1", null, campus.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("p", null, campus.address), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("img", {
+    className: "single-pageflex-column center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("section", {
+    className: "single-header"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
+    className: "info flex-column center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("h1", null, campus.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("p", null, campus.address), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("p", null, campus.description)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("img", {
     src: campus.imageUrl,
     alt: "campus photo"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("p", null, campus.description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_CampusForm__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("h2", null, "Enrollees"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("ul", null, campus.students.length ? campus.students.map(function (student) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("li", {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
+    className: "enrollees flex-column"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("h2", null, "Enrollees"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
+    className: "enrollee-list flex-row center"
+  }, campus.students.length ? campus.students.map(function (student) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("h3", {
       key: student.id
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
       to: "/students/".concat(student.id)
@@ -2832,7 +2840,7 @@ var CampusPage = function CampusPage() {
         return handleUnenroll(student);
       }
     }, "Unenroll"));
-  }) : "There are no enrollees!"));
+  }) : "There are no enrollees!")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_CampusForm__WEBPACK_IMPORTED_MODULE_2__["default"], null));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CampusPage);
@@ -3204,11 +3212,15 @@ var StudentPage = function StudentPage() {
     getData();
   }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "flex-column center"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, student.lastName, ", ", student.firstName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, student.email ? student.email : "No email on file"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "GPA: ", student.gpa ? student.gpa : "No GPA on file"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Attends: ", schoolLink(student)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+    className: "single-page flex-column center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
+    className: "single-header"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "info flex-column center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, student.lastName, ", ", student.firstName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, student.email ? student.email : "No email on file"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "GPA: ", student.gpa ? student.gpa : "No GPA on file"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, schoolLink(student))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
     src: student.imageUrl,
     alt: "student photo"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_StudentForm__WEBPACK_IMPORTED_MODULE_2__["default"], null));
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_StudentForm__WEBPACK_IMPORTED_MODULE_2__["default"], null));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (StudentPage);

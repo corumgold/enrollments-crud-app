@@ -32,15 +32,18 @@ const StudentPage = () => {
   }, []);
 
   return (
-    <div className="flex-column center">
-      <h1>
-        {student.lastName}, {student.firstName}
-      </h1>
-      <p>{student.email ? student.email : "No email on file"}</p>
-      <p>GPA: {student.gpa ? student.gpa : "No GPA on file"}</p>
-      <h2>Attends: {schoolLink(student)}</h2>
-      <img src={student.imageUrl} alt="student photo" />
-
+    <div className="single-page flex-column center">
+      <section className="single-header">
+        <div className="info flex-column center">
+          <h1>
+            {student.lastName}, {student.firstName}
+          </h1>
+          <p>{student.email ? student.email : "No email on file"}</p>
+          <p>GPA: {student.gpa ? student.gpa : "No GPA on file"}</p>
+          <h2>{schoolLink(student)}</h2>
+        </div>
+        <img src={student.imageUrl} alt="student photo" />
+      </section>
       <StudentForm />
     </div>
   );
