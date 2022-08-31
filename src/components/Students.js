@@ -18,7 +18,7 @@ const Students = () => {
           );
 
           return (
-            <div key={student.id}>
+            <div className="list-item" key={student.id}>
               <h2>
                 <Link to={`/students/${student.id}`}>
                   {student.lastName}, {student.firstName}

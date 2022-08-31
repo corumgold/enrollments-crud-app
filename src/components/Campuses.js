@@ -18,17 +18,19 @@ const Campuses = () => {
           ).length;
 
           return (
-            <div key={campus.id}>
+            <div className="list-item" key={campus.id}>
               <h2>
-                <Link to={`/campuses/${campus.id}`}>
-                  {campus.name} ({enrollments}
-                  {!enrollments || enrollments > 1
-                    ? " Enrollments"
-                    : " Enrollment"}
-                  )
-                </Link>
+                <Link to={`/campuses/${campus.id}`}>{campus.name}</Link>
               </h2>
-              <button onClick={() => dispatch(deleteCampus(campus))}>Delete School</button>
+              <h3>
+                {enrollments}
+                {!enrollments || enrollments > 1
+                  ? " Enrollments"
+                  : " Enrollment"}
+              </h3>
+              <button onClick={() => dispatch(deleteCampus(campus))}>
+                Delete School
+              </button>
               <p>{campus.description} </p>
             </div>
           );

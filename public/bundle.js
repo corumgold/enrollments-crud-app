@@ -2877,10 +2877,11 @@ var Campuses = function Campuses() {
       return (student === null || student === void 0 ? void 0 : student.campusId) === campus.id;
     }).length;
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      className: "list-item",
       key: campus.id
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
       to: "/campuses/".concat(campus.id)
-    }, campus.name, " (", enrollments, !enrollments || enrollments > 1 ? " Enrollments" : " Enrollment", ")")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    }, campus.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, enrollments, !enrollments || enrollments > 1 ? " Enrollments" : " Enrollment"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
       onClick: function onClick() {
         return dispatch((0,_store_reducers_campusReducer__WEBPACK_IMPORTED_MODULE_2__.deleteCampus)(campus));
       }
@@ -3252,6 +3253,7 @@ var Students = function Students() {
       return campus.id === student.campusId;
     });
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      className: "list-item",
       key: student.id
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
       to: "/students/".concat(student.id)
