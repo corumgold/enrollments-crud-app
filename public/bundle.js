@@ -2981,7 +2981,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var StudentForm = function StudentForm() {
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useDispatch)();
   var params = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useParams)();
-  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useNavigate)(); //Check if form is for a new student or updating an existing
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useNavigate)();
+  var campuses = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useSelector)(function (state) {
+    return state.campuses;
+  }); //Check if form is for a new student or updating an existing
 
   var newStudent = true;
   if (params.studentId) newStudent = false;
@@ -2990,6 +2993,8 @@ var StudentForm = function StudentForm() {
       _useState2 = _slicedToArray(_useState, 2),
       student = _useState2[0],
       setStudent = _useState2[1];
+
+  console.log(student);
 
   var handleStudentFirstName = function handleStudentFirstName(e) {
     setStudent(_objectSpread(_objectSpread({}, student), {}, {
@@ -3018,6 +3023,14 @@ var StudentForm = function StudentForm() {
   var handleStudentImage = function handleStudentImage(e) {
     setStudent(_objectSpread(_objectSpread({}, student), {}, {
       imageUrl: e.target.value
+    }));
+  };
+
+  var handleStudentCampus = function handleStudentCampus(e) {
+    var campusNum = Number(e.target.value);
+    console.log(campusNum);
+    setStudent(_objectSpread(_objectSpread({}, student), {}, {
+      campusId: campusNum
     }));
   };
 
@@ -3102,7 +3115,18 @@ var StudentForm = function StudentForm() {
     name: "imageUrl",
     value: student.imageUrl || "",
     onChange: handleStudentImage
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "campuses"
+  }, "Choose Campus:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+    onChange: handleStudentCampus
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: null
+  }, "Please Select a Campus"), campuses.map(function (campus) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+      key: campus.id,
+      value: campus.id || ""
+    }, campus.name);
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     onClick: handleSubmit
   }, newStudent ? "Create" : "Update"));
 };

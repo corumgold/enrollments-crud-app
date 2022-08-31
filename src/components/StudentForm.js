@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 import { createStudent, updateStudent } from "../store/reducers/studentReducer";
 
@@ -8,12 +8,14 @@ const StudentForm = () => {
   const dispatch = useDispatch();
   const params = useParams();
   const navigate = useNavigate();
+  const campuses = useSelector((state) => state.campuses);
 
   //Check if form is for a new student or updating an existing
   let newStudent = true;
   if (params.studentId) newStudent = false;
 
   const [student, setStudent] = useState({});
+  console.log(student);
 
   const handleStudentFirstName = (e) => {
     setStudent({ ...student, firstName: e.target.value });
@@ -33,6 +35,12 @@ const StudentForm = () => {
 
   const handleStudentImage = (e) => {
     setStudent({ ...student, imageUrl: e.target.value });
+  };
+
+  const handleStudentCampus = (e) => {
+    let campusNum = Number(e.target.value)
+    console.log(campusNum)
+    setStudent({ ...student, campusId: campusNum });
   };
 
   const handleSubmit = (e) => {
@@ -97,17 +105,17 @@ const StudentForm = () => {
         onChange={handleStudentImage}
       />
 
-      {/* <label htmlFor="campuses">Choose Campus:</label>
-      <select onChange={handleCampus}>
+      <label htmlFor="campuses">Choose Campus:</label>
+      <select onChange={handleStudentCampus}>
         <option value={null}>Please Select a Campus</option>
         {campuses.map((campus) => {
           return (
-            <option key={campus.id} value={campus.id}>
+            <option key={campus.id} value={campus.id || ""}>
               {campus.name}
             </option>
           );
         })}
-      </select> */}
+      </select>
 
       <button onClick={handleSubmit}>{newStudent ? "Create" : "Update"}</button>
     </form>
