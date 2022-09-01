@@ -16,6 +16,7 @@ const StudentPage = () => {
     gpa: null,
     imageUrl: null
   });
+  
 
   useEffect(() => {
     const getData = async () => {

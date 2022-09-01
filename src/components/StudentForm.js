@@ -14,30 +14,37 @@ const StudentForm = () => {
   if (params.studentId) newStudent = false;
 
   const [student, setStudent] = useState({});
+  const [submitted, setSubmitted] = useState(false);
 
   const handleStudentFirstName = (e) => {
     setStudent({ ...student, firstName: e.target.value });
+    setSubmitted(false);
   };
 
   const handleStudentLastName = (e) => {
     setStudent({ ...student, lastName: e.target.value });
+    setSubmitted(false);
   };
 
   const handleStudentEmail = (e) => {
     setStudent({ ...student, email: e.target.value });
+    setSubmitted(false);
   };
 
   const handleStudentGpa = (e) => {
     setStudent({ ...student, gpa: e.target.value });
+    setSubmitted(false);
   };
 
   const handleStudentImage = (e) => {
     setStudent({ ...student, imageUrl: e.target.value });
+    setSubmitted(false);
   };
 
   const handleStudentCampus = (e) => {
     let campusNum = Number(e.target.value);
     setStudent({ ...student, campusId: campusNum });
+    setSubmitted(false);
   };
 
   const handleSubmit = (e) => {
@@ -53,6 +60,7 @@ const StudentForm = () => {
         imageUrl: null,
       });
     } else dispatch(updateStudent({ ...student }));
+    setSubmitted(true);
   };
 
   useEffect(() => {
@@ -70,6 +78,7 @@ const StudentForm = () => {
   return (
     <form className="form flex-column">
       <h2>{newStudent ? "Create New Student" : "Update Student"}</h2>
+      {submitted ? <div>Thank you for submitting!</div> : null}
       <label htmlFor="firstName">First Name:</label>
       <input
         name="first Name"

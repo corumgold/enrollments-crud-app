@@ -13,21 +13,26 @@ const CampusForm = () => {
   if (params.campusId) newCampus = false;
 
   const [campus, setCampus] = useState({});
+  const [submitted, setSubmitted] = useState(false);
 
   const handleCampusName = (e) => {
     setCampus({ ...campus, name: e.target.value });
+    setSubmitted(false)
   };
 
   const handleCampusAddress = (e) => {
     setCampus({ ...campus, address: e.target.value });
+    setSubmitted(false)
   };
 
   const handleCampusDescription = (e) => {
     setCampus({ ...campus, description: e.target.value });
+    setSubmitted(false)
   };
 
   const handleCampusImage = (e) => {
     setCampus({ ...campus, imageUrl: e.target.value });
+    setSubmitted(false)
   };
 
   const handleSubmit = (e) => {
@@ -42,6 +47,7 @@ const CampusForm = () => {
         imageUrl: null,
       });
     } else dispatch(updateCampus({ ...campus }));
+    setSubmitted(true);
   };
 
   useEffect(() => {
@@ -57,6 +63,7 @@ const CampusForm = () => {
   return (
     <form className="form flex-column">
       <h2>{newCampus ? "Create New Campus" : "Update Campus"}</h2>
+      {submitted ? <div>Thank you for submitting!</div> : null}
       <label htmlFor="name">Name:</label>
       <input
         name="name"
