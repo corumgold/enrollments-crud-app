@@ -2634,15 +2634,13 @@ var CampusForm = function CampusForm() {
 
     if (newCampus) {
       dispatch((0,_store_reducers_campusReducer__WEBPACK_IMPORTED_MODULE_3__.createCampus)(_objectSpread({}, campus)));
+      setCampus(_objectSpread(_objectSpread({}, campus), {}, {
+        name: "",
+        address: "",
+        description: "",
+        imageUrl: ""
+      }));
     } else dispatch((0,_store_reducers_campusReducer__WEBPACK_IMPORTED_MODULE_3__.updateCampus)(_objectSpread({}, campus)));
-
-    setCampus(_objectSpread(_objectSpread({}, campus), {}, {
-      name: "",
-      address: "",
-      description: "",
-      imageUrl: ""
-    }));
-    navigate("/campuses");
   };
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
@@ -2767,9 +2765,14 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var CampusPage = function CampusPage() {
+  var campuses = (0,react_redux__WEBPACK_IMPORTED_MODULE_4__.useSelector)(function (state) {
+    return state.campuses;
+  });
+  var students = (0,react_redux__WEBPACK_IMPORTED_MODULE_4__.useSelector)(function (state) {
+    return state.students;
+  });
   var params = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useParams)();
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_4__.useDispatch)();
-  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useNavigate)();
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({
     name: "",
@@ -2786,7 +2789,6 @@ var CampusPage = function CampusPage() {
     dispatch((0,_store_reducers_studentReducer__WEBPACK_IMPORTED_MODULE_3__.updateStudent)(_objectSpread(_objectSpread({}, student), {}, {
       campusId: null
     })));
-    navigate("/students/".concat(student.id));
   };
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
@@ -2818,7 +2820,7 @@ var CampusPage = function CampusPage() {
     }();
 
     getData();
-  }, []);
+  }, [campuses, students]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
     className: "single-page flex-column center"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("section", {

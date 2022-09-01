@@ -15,5 +15,6 @@ export const schoolLink = (student) => {
         <Link to={`/campuses/${student.campusId}`}>{student.campus.name}</Link>
       );
     } else return "This student is not registered in school";
-  };
+};
+  
   

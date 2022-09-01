@@ -35,15 +35,14 @@ const CampusForm = () => {
     e.preventDefault();
     if (newCampus) {
       dispatch(createCampus({ ...campus }));
+      setCampus({
+        ...campus,
+        name: "",
+        address: "",
+        description: "",
+        imageUrl: "",
+      });
     } else dispatch(updateCampus({ ...campus }));
-    setCampus({
-      ...campus,
-      name: "",
-      address: "",
-      description: "",
-      imageUrl: "",
-    });
-    navigate("/campuses");
   };
 
   useEffect(() => {

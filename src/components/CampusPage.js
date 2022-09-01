@@ -1,15 +1,16 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import CampusForm from "./CampusForm";
 import { updateStudent } from "../store/reducers/studentReducer";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const CampusPage = () => {
+  const campuses = useSelector((state) => state.campuses);
+  const students = useSelector(state => state.students)
   const params = useParams();
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const [campus, setCampus] = useState({
     name: "",
@@ -21,7 +22,6 @@ const CampusPage = () => {
 
   const handleUnenroll = (student) => {
     dispatch(updateStudent({ ...student, campusId: null }));
-    navigate(`/students/${student.id}`);
   };
 
   useEffect(() => {
@@ -30,7 +30,7 @@ const CampusPage = () => {
       setCampus({ ...campusData.data });
     };
     getData();
-  }, []);
+  }, [campuses, students]);
 
   return (
     <div className="single-page flex-column center">
