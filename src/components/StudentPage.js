@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
 import StudentForm from "./StudentForm";
+import { useSelector } from "react-redux";
+import { schoolLink } from "../helperFuncs";
 
 const StudentPage = () => {
+  const students = useSelector((state) => state.students);
   const params = useParams();
 
   const [student, setStudent] = useState({
@@ -15,21 +17,13 @@ const StudentPage = () => {
     imageUrl: "",
   });
 
-  const schoolLink = (student) => {
-    if (student.campusId) {
-      return (
-        <Link to={`/campuses/${student.campusId}`}>{student.campus.name}</Link>
-      );
-    } else return "This student is not registered in school";
-  };
-
   useEffect(() => {
     const getData = async () => {
       const studentData = await axios.get(`/api/students/${params.studentId}`);
       setStudent({ ...studentData.data });
     };
     getData();
-  }, []);
+  }, [students]);
 
   return (
     <div className="single-page flex-column center">

@@ -37,7 +37,7 @@ const StudentForm = () => {
   };
 
   const handleStudentCampus = (e) => {
-    let campusNum = Number(e.target.value)
+    let campusNum = Number(e.target.value);
     setStudent({ ...student, campusId: campusNum });
   };
 
@@ -45,16 +45,15 @@ const StudentForm = () => {
     e.preventDefault();
     if (newStudent) {
       dispatch(createStudent({ ...student }));
+      setStudent({
+        ...student,
+        firstName: "",
+        lastName: "",
+        email: "",
+        gpa: "",
+        imageUrl: "",
+      });
     } else dispatch(updateStudent({ ...student }));
-    setStudent({
-      ...student,
-      firstName: "",
-      lastName: "",
-      email: "",
-      gpa: "",
-      imageUrl: "",
-    });
-    navigate("/students");
   };
 
   useEffect(() => {
