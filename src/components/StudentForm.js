@@ -49,7 +49,7 @@ const StudentForm = () => {
         firstName: "",
         lastName: "",
         email: "",
-        gpa: "",
+        gpa: null,
         imageUrl: "",
       });
     } else dispatch(updateStudent({ ...student }));

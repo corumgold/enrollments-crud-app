@@ -3085,7 +3085,7 @@ var StudentForm = function StudentForm() {
         firstName: "",
         lastName: "",
         email: "",
-        gpa: "",
+        gpa: null,
         imageUrl: ""
       }));
     } else dispatch((0,_store_reducers_studentReducer__WEBPACK_IMPORTED_MODULE_3__.updateStudent)(_objectSpread({}, student)));
