@@ -49,13 +49,19 @@ const CampusForm = () => {
     if (newCampus) {
       dispatch(createCampus({ ...campus }));
     } else dispatch(updateCampus({ ...campus }));
-    // setCampus({
-    //   ...campus,
-    //   name: null,
-    //   address: null,
-    //   description: null,
-    //   imageUrl: null,
-    // });
+  };
+
+  const handleClear = (e) => {
+    e.preventDefault();
+    setSubmitted(false);
+    setValid(false);
+    setCampus({
+      ...campus,
+      name: null,
+      address: null,
+      description: null,
+      imageUrl: null,
+    });
   };
 
   useEffect(() => {
@@ -67,9 +73,6 @@ const CampusForm = () => {
       getData();
     }
   }, []);
-
-  console.log('🦜', valid)
-  console.log('🍁', submitted)
 
   return (
     <form className="form flex-column">
@@ -109,7 +112,13 @@ const CampusForm = () => {
         onChange={handleCampusImage}
       />
 
-      <button onClick={handleSubmit}>{newCampus ? "Create" : "Update"}</button>
+      {submitted && valid && newCampus ? (
+        <button onClick={handleClear}>Clear</button>
+      ) : (
+        <button onClick={handleSubmit}>
+          {newCampus ? "Create" : "Update"}
+        </button>
+      )}
     </form>
   );
 };

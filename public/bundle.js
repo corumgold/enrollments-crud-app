@@ -2656,14 +2656,19 @@ var CampusForm = function CampusForm() {
 
     if (newCampus) {
       dispatch((0,_store_reducers_campusReducer__WEBPACK_IMPORTED_MODULE_3__.createCampus)(_objectSpread({}, campus)));
-    } else dispatch((0,_store_reducers_campusReducer__WEBPACK_IMPORTED_MODULE_3__.updateCampus)(_objectSpread({}, campus))); // setCampus({
-    //   ...campus,
-    //   name: null,
-    //   address: null,
-    //   description: null,
-    //   imageUrl: null,
-    // });
+    } else dispatch((0,_store_reducers_campusReducer__WEBPACK_IMPORTED_MODULE_3__.updateCampus)(_objectSpread({}, campus)));
+  };
 
+  var handleClear = function handleClear(e) {
+    e.preventDefault();
+    setSubmitted(false);
+    setValid(false);
+    setCampus(_objectSpread(_objectSpread({}, campus), {}, {
+      name: null,
+      address: null,
+      description: null,
+      imageUrl: null
+    }));
   };
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
@@ -2698,8 +2703,6 @@ var CampusForm = function CampusForm() {
       getData();
     }
   }, []);
-  console.log('🦜', valid);
-  console.log('🍁', submitted);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
     className: "form flex-column"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, newCampus ? "Create New Campus" : "Update Campus"), submitted && valid ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
@@ -2728,7 +2731,9 @@ var CampusForm = function CampusForm() {
     name: "imageUrl",
     value: campus.imageUrl || "",
     onChange: handleCampusImage
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+  }), submitted && valid && newCampus ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: handleClear
+  }, "Clear") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     onClick: handleSubmit
   }, newCampus ? "Create" : "Update"));
 };
