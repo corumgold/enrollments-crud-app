@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { createStudent, updateStudent } from "../store/reducers/studentReducer";
 
 const StudentForm = () => {
   const dispatch = useDispatch();
   const params = useParams();
-  const navigate = useNavigate();
   const campuses = useSelector((state) => state.campuses);
 
   //Check if form is for a new student or updating an existing

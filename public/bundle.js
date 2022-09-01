@@ -3025,7 +3025,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var StudentForm = function StudentForm() {
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useDispatch)();
   var params = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useParams)();
-  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useNavigate)();
   var campuses = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useSelector)(function (state) {
     return state.campuses;
   }); //Check if form is for a new student or updating an existing
@@ -3345,11 +3344,15 @@ var Students = function Students() {
 
   var handleFilter = function handleFilter() {
     setChecked(!checked);
-    checked ? setShownStudents(students) : setShownStudents(students.filter(function (student) {
-      return !student.campusId;
-    }));
   };
 
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (!checked) {
+      setShownStudents(students);
+    } else setShownStudents(students.filter(function (student) {
+      return !student.campusId;
+    }));
+  }, [checked, campuses, students]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("main", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "list flex-column"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", {

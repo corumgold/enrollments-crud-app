@@ -14,17 +14,20 @@ const Students = () => {
 
   const handleFilter = () => {
     setChecked(!checked);
-    checked
-      ? setShownStudents(students)
-      : setShownStudents(students.filter((student) => !student.campusId));
   };
+
+  useEffect(() => {
+    if (!checked) {
+      setShownStudents(students);
+    } else setShownStudents(students.filter((student) => !student.campusId));
+  }, [checked, campuses, students]);
 
   return (
     <>
       <main>
         <div className="list flex-column">
           <h2 className="filter">
-          Show Only Unenrolled Students (
+            Show Only Unenrolled Students (
             {students.filter((student) => !student.campusId).length}){" "}
             <input
               className="checkbox"
