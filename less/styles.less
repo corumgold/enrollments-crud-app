@@ -152,8 +152,9 @@ input.checkbox {
 }
 
 .info {
-  border: @light-border;
+  // border: @light-border;
   border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .info * {
@@ -161,10 +162,11 @@ input.checkbox {
 }
 
 .enrollees {
-  border: @light-border;
+  // border: @light-border;
   border-radius: 10px;
   margin: 1rem;
   padding: 0.5rem;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .enrollees * {
@@ -206,7 +208,8 @@ input.checkbox {
   border-radius: 10px;
   color: @second-text-color;
   max-height: 475px;
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 
 .form h2 {
@@ -238,7 +241,9 @@ input.checkbox {
 }
 
 @media (max-width: 700px) {
-  main, nav, .single-header {
+  main,
+  nav,
+  .single-header {
     flex-direction: column;
   }
 

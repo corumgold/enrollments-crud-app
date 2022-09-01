@@ -114,17 +114,17 @@ input.checkbox {
   border-radius: 10px;
 }
 .info {
-  border: 2px solid #284b63;
   border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 .info * {
   margin: 0.5rem;
 }
 .enrollees {
-  border: 2px solid #284b63;
   border-radius: 10px;
   margin: 1rem;
   padding: 0.5rem;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 .enrollees * {
   margin: 0.5rem;
