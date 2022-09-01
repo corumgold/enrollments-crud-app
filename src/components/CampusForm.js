@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { createCampus, updateCampus } from "../store/reducers/campusReducer";
 
 const CampusForm = () => {
   const dispatch = useDispatch();
   const params = useParams();
-  const navigate = useNavigate();
 
   //Check if form is for a new campus or updating an existing
   let newCampus = true;
@@ -40,7 +39,7 @@ const CampusForm = () => {
         name: "",
         address: "",
         description: "",
-        imageUrl: "",
+        imageUrl: null,
       });
     } else dispatch(updateCampus({ ...campus }));
   };

@@ -50,7 +50,7 @@ const StudentForm = () => {
         lastName: "",
         email: "",
         gpa: null,
-        imageUrl: "",
+        imageUrl: null,
       });
     } else dispatch(updateStudent({ ...student }));
   };

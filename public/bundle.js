@@ -2594,8 +2594,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var CampusForm = function CampusForm() {
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useDispatch)();
-  var params = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useParams)();
-  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useNavigate)(); //Check if form is for a new campus or updating an existing
+  var params = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useParams)(); //Check if form is for a new campus or updating an existing
 
   var newCampus = true;
   if (params.campusId) newCampus = false;
@@ -2638,7 +2637,7 @@ var CampusForm = function CampusForm() {
         name: "",
         address: "",
         description: "",
-        imageUrl: ""
+        imageUrl: null
       }));
     } else dispatch((0,_store_reducers_campusReducer__WEBPACK_IMPORTED_MODULE_3__.updateCampus)(_objectSpread({}, campus)));
   };
@@ -2909,7 +2908,8 @@ var Campuses = function Campuses() {
 
   var handleCampusFilter = function handleCampusFilter() {
     setChecked(!checked);
-  };
+  }; //Check which campuses to show based on campus filter
+
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     if (!checked) {
@@ -3086,7 +3086,7 @@ var StudentForm = function StudentForm() {
         lastName: "",
         email: "",
         gpa: null,
-        imageUrl: ""
+        imageUrl: null
       }));
     } else dispatch((0,_store_reducers_studentReducer__WEBPACK_IMPORTED_MODULE_3__.updateStudent)(_objectSpread({}, student)));
   };
@@ -3237,8 +3237,8 @@ var StudentPage = function StudentPage() {
     firstName: "",
     lastName: "",
     email: "",
-    gpa: "",
-    imageUrl: ""
+    gpa: null,
+    imageUrl: null
   }),
       _useState2 = _slicedToArray(_useState, 2),
       student = _useState2[0],
@@ -3344,9 +3344,10 @@ var Students = function Students() {
       checked = _useState4[0],
       setChecked = _useState4[1];
 
-  var handleFilter = function handleFilter() {
+  var handleStudentFilter = function handleStudentFilter() {
     setChecked(!checked);
-  };
+  }; //Check which students to show based on student filter
+
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     if (!checked) {
@@ -3364,7 +3365,7 @@ var Students = function Students() {
   }).length, ")", " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     className: "checkbox",
     type: "checkbox",
-    onChange: handleFilter
+    onChange: handleStudentFilter
   })), shownStudents.map(function (student) {
     var studentCampus = campuses.find(function (campus) {
       return campus.id === student.campusId;

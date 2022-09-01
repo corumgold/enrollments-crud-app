@@ -17,6 +17,7 @@ const Campuses = () => {
     setChecked(!checked);
   };
 
+  //Check which campuses to show based on campus filter
   useEffect(() => {
     if (!checked) {
       setShownCampuses(campuses);

@@ -12,10 +12,11 @@ const Students = () => {
   const [shownStudents, setShownStudents] = useState(students);
   const [checked, setChecked] = useState(false);
 
-  const handleFilter = () => {
+  const handleStudentFilter = () => {
     setChecked(!checked);
   };
 
+  //Check which students to show based on student filter
   useEffect(() => {
     if (!checked) {
       setShownStudents(students);
@@ -31,7 +32,7 @@ const Students = () => {
           <input
             className="checkbox"
             type="checkbox"
-            onChange={handleFilter}
+            onChange={handleStudentFilter}
           ></input>
         </h2>
         {shownStudents.map((student) => {

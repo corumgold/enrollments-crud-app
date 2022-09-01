@@ -13,8 +13,8 @@ const StudentPage = () => {
     firstName: "",
     lastName: "",
     email: "",
-    gpa: "",
-    imageUrl: "",
+    gpa: null,
+    imageUrl: null
   });
 
   useEffect(() => {

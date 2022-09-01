@@ -22,7 +22,6 @@ router.get("/:studentId", async (req, res, next) => {
 //POST /students
 router.post("/", async (req, res, next) => {
   try {
-    console.log(req.body)
     res.status(201).send(await Student.create(req.body));
   } catch (err) {
     next(err);
