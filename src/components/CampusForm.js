@@ -14,40 +14,48 @@ const CampusForm = () => {
 
   const [campus, setCampus] = useState({});
   const [submitted, setSubmitted] = useState(false);
+  const [valid, setValid] = useState(false);
 
   const handleCampusName = (e) => {
     setCampus({ ...campus, name: e.target.value });
-    setSubmitted(false)
+    setSubmitted(false);
+    setValid(false);
   };
 
   const handleCampusAddress = (e) => {
     setCampus({ ...campus, address: e.target.value });
-    setSubmitted(false)
+    setSubmitted(false);
+    setValid(false);
   };
 
   const handleCampusDescription = (e) => {
     setCampus({ ...campus, description: e.target.value });
-    setSubmitted(false)
+    setSubmitted(false);
+    setValid(false);
   };
 
   const handleCampusImage = (e) => {
     setCampus({ ...campus, imageUrl: e.target.value });
-    setSubmitted(false)
+    setSubmitted(false);
+    setValid(false);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setSubmitted(true);
+    if (campus.name && campus.address) {
+      setValid(true);
+    }
     if (newCampus) {
       dispatch(createCampus({ ...campus }));
-      setCampus({
-        ...campus,
-        name: "",
-        address: "",
-        description: "",
-        imageUrl: null,
-      });
     } else dispatch(updateCampus({ ...campus }));
-    setSubmitted(true);
+    // setCampus({
+    //   ...campus,
+    //   name: null,
+    //   address: null,
+    //   description: null,
+    //   imageUrl: null,
+    // });
   };
 
   useEffect(() => {
@@ -60,16 +68,24 @@ const CampusForm = () => {
     }
   }, []);
 
+  console.log('🦜', valid)
+  console.log('🍁', submitted)
+
   return (
     <form className="form flex-column">
       <h2>{newCampus ? "Create New Campus" : "Update Campus"}</h2>
-      {submitted ? <div>Thank you for submitting!</div> : null}
+      {submitted && valid ? (
+        <div className="submit-message">
+          Campus {newCampus ? "Created!" : "Updated!"}
+        </div>
+      ) : null}
       <label htmlFor="name">Name:</label>
       <input
         name="name"
         value={campus.name || ""}
         onChange={handleCampusName}
       />
+      {!campus.name && submitted ? <span>Name is Required</span> : null}
 
       <label htmlFor="address">Address:</label>
       <input
@@ -77,6 +93,7 @@ const CampusForm = () => {
         value={campus.address || ""}
         onChange={handleCampusAddress}
       />
+      {submitted && !campus.address ? <span>Address is Required</span> : null}
 
       <label htmlFor="description">Description:</label>
       <textarea

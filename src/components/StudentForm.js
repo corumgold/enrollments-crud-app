@@ -53,9 +53,9 @@ const StudentForm = () => {
       dispatch(createStudent({ ...student }));
       setStudent({
         ...student,
-        firstName: "",
-        lastName: "",
-        email: "",
+        firstName: null,
+        lastName: null,
+        email: null,
         gpa: null,
         imageUrl: null,
       });

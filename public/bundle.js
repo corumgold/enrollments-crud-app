@@ -2609,11 +2609,17 @@ var CampusForm = function CampusForm() {
       submitted = _useState4[0],
       setSubmitted = _useState4[1];
 
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState6 = _slicedToArray(_useState5, 2),
+      valid = _useState6[0],
+      setValid = _useState6[1];
+
   var handleCampusName = function handleCampusName(e) {
     setCampus(_objectSpread(_objectSpread({}, campus), {}, {
       name: e.target.value
     }));
     setSubmitted(false);
+    setValid(false);
   };
 
   var handleCampusAddress = function handleCampusAddress(e) {
@@ -2621,6 +2627,7 @@ var CampusForm = function CampusForm() {
       address: e.target.value
     }));
     setSubmitted(false);
+    setValid(false);
   };
 
   var handleCampusDescription = function handleCampusDescription(e) {
@@ -2628,6 +2635,7 @@ var CampusForm = function CampusForm() {
       description: e.target.value
     }));
     setSubmitted(false);
+    setValid(false);
   };
 
   var handleCampusImage = function handleCampusImage(e) {
@@ -2635,22 +2643,27 @@ var CampusForm = function CampusForm() {
       imageUrl: e.target.value
     }));
     setSubmitted(false);
+    setValid(false);
   };
 
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
+    setSubmitted(true);
+
+    if (campus.name && campus.address) {
+      setValid(true);
+    }
 
     if (newCampus) {
       dispatch((0,_store_reducers_campusReducer__WEBPACK_IMPORTED_MODULE_3__.createCampus)(_objectSpread({}, campus)));
-      setCampus(_objectSpread(_objectSpread({}, campus), {}, {
-        name: "",
-        address: "",
-        description: "",
-        imageUrl: null
-      }));
-    } else dispatch((0,_store_reducers_campusReducer__WEBPACK_IMPORTED_MODULE_3__.updateCampus)(_objectSpread({}, campus)));
+    } else dispatch((0,_store_reducers_campusReducer__WEBPACK_IMPORTED_MODULE_3__.updateCampus)(_objectSpread({}, campus))); // setCampus({
+    //   ...campus,
+    //   name: null,
+    //   address: null,
+    //   description: null,
+    //   imageUrl: null,
+    // });
 
-    setSubmitted(true);
   };
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
@@ -2685,21 +2698,25 @@ var CampusForm = function CampusForm() {
       getData();
     }
   }, []);
+  console.log('🦜', valid);
+  console.log('🍁', submitted);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
     className: "form flex-column"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, newCampus ? "Create New Campus" : "Update Campus"), submitted ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Thank you for submitting!") : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, newCampus ? "Create New Campus" : "Update Campus"), submitted && valid ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "submit-message"
+  }, "Campus ", newCampus ? "Created!" : "Updated!") : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "name"
   }, "Name:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     name: "name",
     value: campus.name || "",
     onChange: handleCampusName
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+  }), !campus.name && submitted ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "Name is Required") : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "address"
   }, "Address:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     name: "address",
     value: campus.address || "",
     onChange: handleCampusAddress
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+  }), submitted && !campus.address ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "Address is Required") : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "description"
   }, "Description:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("textarea", {
     name: "description",
@@ -3104,9 +3121,9 @@ var StudentForm = function StudentForm() {
     if (newStudent) {
       dispatch((0,_store_reducers_studentReducer__WEBPACK_IMPORTED_MODULE_3__.createStudent)(_objectSpread({}, student)));
       setStudent(_objectSpread(_objectSpread({}, student), {}, {
-        firstName: "",
-        lastName: "",
-        email: "",
+        firstName: null,
+        lastName: null,
+        email: null,
         gpa: null,
         imageUrl: null
       }));

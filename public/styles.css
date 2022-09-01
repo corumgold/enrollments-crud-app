@@ -158,11 +158,21 @@ input.checkbox {
   margin: 1rem;
   border-radius: 10px;
   color: #d9d9d9;
-  max-height: 500px;
+  height: fit-content;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 .form h2 {
   margin: 0;
+}
+.form span {
+  color: #e63946;
+  font-weight: 600;
+  align-self: flex-start;
+}
+.submit-message {
+  color: #a7c957;
+  font-size: 24px;
+  font-weight: 600;
 }
 .form label {
   color: #d9d9d9;
