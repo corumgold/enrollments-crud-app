@@ -75,9 +75,9 @@ input.checkbox {
 .list-item {
   margin: 8px;
   padding: 12px;
-  border: 2px solid #284b63;
   border-radius: 10px;
   text-align: left;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 .list-item * {
   margin: 0;
@@ -156,10 +156,10 @@ input.checkbox {
   background-color: #284b63;
   padding: 1.5rem;
   margin: 1rem;
-  border: 8px solid #3c6e71;
   border-radius: 10px;
   color: #d9d9d9;
   max-height: 475px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 .form h2 {
   margin: 0;
