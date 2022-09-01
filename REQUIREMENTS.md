@@ -148,25 +148,13 @@ Congrats! You have completed your fourth vertical slice! Make sure to `commit -m
 #### Backend
 
 - [x] Write a route to update an existing campus
-- [ ] Write a route to update an existing student
+- [x] Write a route to update an existing student
 
 </details>
 
 ### Bonus Tier: Finishing Touches (23 EC)
 
 <details>
-
-#### Testing
-
-- Write the following tests, each marked with a \*\*\* in the tests directory
-  - [ ] React (AllCampuses): renders "No Campuses" if passed an empty array of campuses
-  - [ ] React (AllStudents): renders "No Students" if passed an empty array of students
-  - [ ] Redux (campuses): returns the initial state by default
-  - [ ] Redux (students): returns the initial state by default
-  - [ ] Express: GET /api/students responds with all students
-  - [ ] Sequelize (Campus): requires name and address
-  - [ ] Sequelize (Student): email must be a valid email
-  - [ ] Navigation: navbar to navigate to home, campuses, students
 
 #### Finishing Touches
 

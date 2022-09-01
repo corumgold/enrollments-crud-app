@@ -60,6 +60,10 @@ main {
   display: flex;
   margin: 1.5rem;
 }
+input.checkbox {
+  width: 16px;
+  height: 16px;
+}
 .list {
   flex: 2 1 0;
   margin: 1rem;

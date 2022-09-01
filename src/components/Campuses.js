@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { deleteCampus } from "../store/reducers/campusReducer";
@@ -9,10 +9,35 @@ const Campuses = () => {
   const students = useSelector((state) => state.students);
   const dispatch = useDispatch();
 
+  const [shownCampuses, setShownCampuses] = useState(campuses);
+  const [checked, setChecked] = useState(false);
+
+  const checkHasStudents = (campus, students) => {
+    return students.find((student) => student.campusId === campus.id);
+  };
+
+  const handleFilter = () => {
+    setChecked(!checked);
+    checked
+      ? setShownCampuses(campuses)
+      : setShownCampuses(
+          campuses.filter((campus) => !checkHasStudents(campus, students))
+        );
+  };
+
   return (
     <main>
       <div className="list flex-column">
-        {campuses.map((campus) => {
+        <h2 className="filter">
+          Show Only Campuses with no Enrollments(
+          {campuses.filter((campus) => !campus.students.length).length}){" "}
+          <input
+            className="checkbox"
+            type="checkbox"
+            onChange={handleFilter}
+          ></input>
+        </h2>
+        {shownCampuses.map((campus) => {
           let enrollments = students.filter(
             (student) => student?.campusId === campus.id
           ).length;
