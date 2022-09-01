@@ -2863,9 +2863,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
 /* harmony import */ var _store_reducers_campusReducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../store/reducers/campusReducer */ "./src/store/reducers/campusReducer.js");
 /* harmony import */ var _CampusForm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./CampusForm */ "./src/components/CampusForm.js");
+/* harmony import */ var _helperFuncs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../helperFuncs */ "./src/helperFuncs.js");
+/* harmony import */ var _helperFuncs__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_helperFuncs__WEBPACK_IMPORTED_MODULE_4__);
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -2877,6 +2879,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -2903,29 +2906,27 @@ var Campuses = function Campuses() {
       checked = _useState4[0],
       setChecked = _useState4[1];
 
-  var checkHasStudents = function checkHasStudents(campus, students) {
-    return students.find(function (student) {
-      return student.campusId === campus.id;
-    });
-  };
-
-  var handleFilter = function handleFilter() {
+  var handleCampusFilter = function handleCampusFilter() {
     setChecked(!checked);
-    checked ? setShownCampuses(campuses) : setShownCampuses(campuses.filter(function (campus) {
-      return !checkHasStudents(campus, students);
-    }));
   };
 
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (!checked) {
+      setShownCampuses(campuses);
+    } else setShownCampuses(campuses.filter(function (campus) {
+      return !(0,_helperFuncs__WEBPACK_IMPORTED_MODULE_4__.checkHasStudents)(campus, students);
+    }));
+  }, [checked, campuses, students]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("main", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "list flex-column"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", {
     className: "filter"
   }, "Show Only Campuses with no Enrollments(", campuses.filter(function (campus) {
-    return !campus.students.length;
+    return !(0,_helperFuncs__WEBPACK_IMPORTED_MODULE_4__.checkHasStudents)(campus, students);
   }).length, ")", " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     className: "checkbox",
     type: "checkbox",
-    onChange: handleFilter
+    onChange: handleCampusFilter
   })), shownCampuses.map(function (campus) {
     var enrollments = students.filter(function (student) {
       return (student === null || student === void 0 ? void 0 : student.campusId) === campus.id;
@@ -2933,7 +2934,7 @@ var Campuses = function Campuses() {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       className: "list-item",
       key: campus.id
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
       to: "/campuses/".concat(campus.id)
     }, campus.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, enrollments, !enrollments || enrollments > 1 ? " Enrollments" : " Enrollment"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, campus.description, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
       onClick: function onClick() {
@@ -3383,6 +3384,25 @@ var Students = function Students() {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Students);
+
+/***/ }),
+
+/***/ "./src/helperFuncs.js":
+/*!****************************!*\
+  !*** ./src/helperFuncs.js ***!
+  \****************************/
+/***/ ((module) => {
+
+// CAMPUSES
+var checkHasStudents = function checkHasStudents(campus, students) {
+  return students.find(function (student) {
+    return student.campusId === campus.id;
+  });
+};
+
+module.exports = {
+  checkHasStudents: checkHasStudents
+};
 
 /***/ }),
 

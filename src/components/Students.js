@@ -24,7 +24,7 @@ const Students = () => {
       <main>
         <div className="list flex-column">
           <h2 className="filter">
-            Show Only Unenrolled Students (
+          Show Only Unenrolled Students (
             {students.filter((student) => !student.campusId).length}){" "}
             <input
               className="checkbox"
