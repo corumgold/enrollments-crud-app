@@ -2922,7 +2922,7 @@ var Campuses = function Campuses() {
     className: "list flex-column"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", {
     className: "filter"
-  }, "Show Only Campuses with no Enrollments(", campuses.filter(function (campus) {
+  }, "No Enrollments Only (", campuses.filter(function (campus) {
     return !(0,_helperFuncs__WEBPACK_IMPORTED_MODULE_4__.checkHasStudents)(campus, students);
   }).length, ")", " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     className: "checkbox",
@@ -3355,11 +3355,11 @@ var Students = function Students() {
       return !student.campusId;
     }));
   }, [checked, campuses, students]);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("main", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("main", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "list flex-column"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", {
     className: "filter"
-  }, "Show Only Unenrolled Students (", students.filter(function (student) {
+  }, "Unenrolled Students Only (", students.filter(function (student) {
     return !student.campusId;
   }).length, ")", " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     className: "checkbox",
@@ -3379,7 +3379,7 @@ var Students = function Students() {
         return dispatch((0,_store_reducers_studentReducer__WEBPACK_IMPORTED_MODULE_2__.deleteStudent)(student));
       }
     }, "Delete Student"));
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_StudentForm__WEBPACK_IMPORTED_MODULE_3__["default"], null)));
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_StudentForm__WEBPACK_IMPORTED_MODULE_3__["default"], null));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Students);

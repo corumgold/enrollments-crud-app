@@ -24,13 +24,13 @@ const Campuses = () => {
       setShownCampuses(
         campuses.filter((campus) => !checkHasStudents(campus, students))
       );
-  },[checked, campuses, students]);
+  }, [checked, campuses, students]);
 
   return (
     <main>
       <div className="list flex-column">
         <h2 className="filter">
-          Show Only Campuses with no Enrollments(
+          No Enrollments Only (
           {
             campuses.filter((campus) => !checkHasStudents(campus, students))
               .length
