@@ -10,11 +10,13 @@ const Home = () => {
         This project is designed to mimic the interface of an application that
         manages different school campuses as well as the students enrolled.
       </p>
-      <p>
-        This application is a single page application wherein you can create,
-        modify, and delete school campuses as well as students. Users are also
-        able to assign students to different schools.
-      </p>
+      <p>Key Features:</p>
+      <ul>
+        <li>Create, Read, Update, and Delete campuses/students</li>
+        <li>Intuitive, mobile-friendly interface</li>
+        <li>Sort students and campuses based on enrollment status</li>
+        <li>Precise form validation</li>
+      </ul>
       <p>
         Fun fact: Each of the campuses listed in the seed file is an actual
         school that I have attended!
