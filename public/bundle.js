@@ -3077,11 +3077,17 @@ var StudentForm = function StudentForm() {
       submitted = _useState4[0],
       setSubmitted = _useState4[1];
 
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState6 = _slicedToArray(_useState5, 2),
+      valid = _useState6[0],
+      setValid = _useState6[1];
+
   var handleStudentFirstName = function handleStudentFirstName(e) {
     setStudent(_objectSpread(_objectSpread({}, student), {}, {
       firstName: e.target.value
     }));
     setSubmitted(false);
+    setValid(false);
   };
 
   var handleStudentLastName = function handleStudentLastName(e) {
@@ -3089,6 +3095,7 @@ var StudentForm = function StudentForm() {
       lastName: e.target.value
     }));
     setSubmitted(false);
+    setValid(false);
   };
 
   var handleStudentEmail = function handleStudentEmail(e) {
@@ -3096,6 +3103,7 @@ var StudentForm = function StudentForm() {
       email: e.target.value
     }));
     setSubmitted(false);
+    setValid(false);
   };
 
   var handleStudentGpa = function handleStudentGpa(e) {
@@ -3103,6 +3111,7 @@ var StudentForm = function StudentForm() {
       gpa: e.target.value
     }));
     setSubmitted(false);
+    setValid(false);
   };
 
   var handleStudentImage = function handleStudentImage(e) {
@@ -3110,6 +3119,7 @@ var StudentForm = function StudentForm() {
       imageUrl: e.target.value
     }));
     setSubmitted(false);
+    setValid(false);
   };
 
   var handleStudentCampus = function handleStudentCampus(e) {
@@ -3118,23 +3128,33 @@ var StudentForm = function StudentForm() {
       campusId: campusNum
     }));
     setSubmitted(false);
+    setValid(false);
   };
 
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
+    setSubmitted(true);
+
+    if (student.firstName && student.lastName && student.email) {
+      setValid(true);
+    }
 
     if (newStudent) {
       dispatch((0,_store_reducers_studentReducer__WEBPACK_IMPORTED_MODULE_3__.createStudent)(_objectSpread({}, student)));
-      setStudent(_objectSpread(_objectSpread({}, student), {}, {
-        firstName: null,
-        lastName: null,
-        email: null,
-        gpa: null,
-        imageUrl: null
-      }));
     } else dispatch((0,_store_reducers_studentReducer__WEBPACK_IMPORTED_MODULE_3__.updateStudent)(_objectSpread({}, student)));
+  };
 
-    setSubmitted(true);
+  var handleClear = function handleClear(e) {
+    e.preventDefault();
+    setSubmitted(false);
+    setValid(false);
+    setStudent(_objectSpread(_objectSpread({}, student), {}, {
+      firstName: null,
+      lastName: null,
+      email: null,
+      gpa: null,
+      imageUrl: null
+    }));
   };
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
@@ -3169,27 +3189,30 @@ var StudentForm = function StudentForm() {
       getData();
     }
   }, []);
+  console.log(valid, submitted);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
     className: "form flex-column"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, newStudent ? "Create New Student" : "Update Student"), submitted ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Thank you for submitting!") : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, newStudent ? "Create New Student" : "Update Student"), submitted && valid ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "submit-message"
+  }, "Student ", newStudent ? "Created!" : "Updated!") : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "firstName"
   }, "First Name:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     name: "first Name",
     value: student.firstName || "",
     onChange: handleStudentFirstName
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+  }), !student.firstName && submitted ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "First Name is Required") : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "lastName"
   }, "Last Name:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     name: "last Name",
     value: student.lastName || "",
     onChange: handleStudentLastName
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+  }), !student.lastName && submitted ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "Last Name is Required") : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "email"
   }, "Email:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     name: "email",
     value: student.email || "",
     onChange: handleStudentEmail
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+  }), !student.email && submitted ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "Email is Required") : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "gpa"
   }, "GPA:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     name: "gpa",
@@ -3212,7 +3235,9 @@ var StudentForm = function StudentForm() {
       key: campus.id,
       value: campus.id || ""
     }, campus.name);
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+  })), submitted && valid && newStudent ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: handleClear
+  }, "Clear") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     onClick: handleSubmit
   }, newStudent ? "Create" : "Update"));
 };

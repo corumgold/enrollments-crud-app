@@ -15,52 +15,68 @@ const StudentForm = () => {
 
   const [student, setStudent] = useState({});
   const [submitted, setSubmitted] = useState(false);
+  const [valid, setValid] = useState(false);
 
   const handleStudentFirstName = (e) => {
     setStudent({ ...student, firstName: e.target.value });
     setSubmitted(false);
+    setValid(false);
   };
 
   const handleStudentLastName = (e) => {
     setStudent({ ...student, lastName: e.target.value });
     setSubmitted(false);
+    setValid(false);
   };
 
   const handleStudentEmail = (e) => {
     setStudent({ ...student, email: e.target.value });
     setSubmitted(false);
+    setValid(false);
   };
 
   const handleStudentGpa = (e) => {
     setStudent({ ...student, gpa: e.target.value });
     setSubmitted(false);
+    setValid(false);
   };
 
   const handleStudentImage = (e) => {
     setStudent({ ...student, imageUrl: e.target.value });
     setSubmitted(false);
+    setValid(false);
   };
 
   const handleStudentCampus = (e) => {
     let campusNum = Number(e.target.value);
     setStudent({ ...student, campusId: campusNum });
     setSubmitted(false);
+    setValid(false);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setSubmitted(true);
+    if (student.firstName && student.lastName && student.email) {
+      setValid(true);
+    }
     if (newStudent) {
       dispatch(createStudent({ ...student }));
-      setStudent({
-        ...student,
-        firstName: null,
-        lastName: null,
-        email: null,
-        gpa: null,
-        imageUrl: null,
-      });
     } else dispatch(updateStudent({ ...student }));
-    setSubmitted(true);
+  };
+
+  const handleClear = (e) => {
+    e.preventDefault();
+    setSubmitted(false);
+    setValid(false);
+    setStudent({
+      ...student,
+      firstName: null,
+      lastName: null,
+      email: null,
+      gpa: null,
+      imageUrl: null,
+    });
   };
 
   useEffect(() => {
@@ -75,16 +91,25 @@ const StudentForm = () => {
     }
   }, []);
 
+  console.log(valid, submitted)
+
   return (
     <form className="form flex-column">
       <h2>{newStudent ? "Create New Student" : "Update Student"}</h2>
-      {submitted ? <div>Thank you for submitting!</div> : null}
+      {submitted && valid ? (
+        <div className="submit-message">
+          Student {newStudent ? "Created!" : "Updated!"}
+        </div>
+      ) : null}
       <label htmlFor="firstName">First Name:</label>
       <input
         name="first Name"
         value={student.firstName || ""}
         onChange={handleStudentFirstName}
       />
+      {!student.firstName && submitted ? (
+        <span>First Name is Required</span>
+      ) : null}
 
       <label htmlFor="lastName">Last Name:</label>
       <input
@@ -92,6 +117,9 @@ const StudentForm = () => {
         value={student.lastName || ""}
         onChange={handleStudentLastName}
       />
+      {!student.lastName && submitted ? (
+        <span>Last Name is Required</span>
+      ) : null}
 
       <label htmlFor="email">Email:</label>
       <input
@@ -99,6 +127,7 @@ const StudentForm = () => {
         value={student.email || ""}
         onChange={handleStudentEmail}
       />
+      {!student.email && submitted ? <span>Email is Required</span> : null}
 
       <label htmlFor="gpa">GPA:</label>
       <input name="gpa" value={student.gpa || ""} onChange={handleStudentGpa} />
@@ -122,7 +151,13 @@ const StudentForm = () => {
         })}
       </select>
 
-      <button onClick={handleSubmit}>{newStudent ? "Create" : "Update"}</button>
+      {submitted && valid && newStudent ? (
+        <button onClick={handleClear}>Clear</button>
+      ) : (
+        <button onClick={handleSubmit}>
+          {newStudent ? "Create" : "Update"}
+        </button>
+      )}
     </form>
   );
 };
