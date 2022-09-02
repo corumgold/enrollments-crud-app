@@ -8,6 +8,3 @@ const init = async () => {
 };
 
 init();
-
-
-//dont touch me!
