@@ -117,8 +117,8 @@ a {
 .single-header img {
   object-fit: cover;
   max-width: 500px;
-  border: 8px solid #3c6e71;
   border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 .info {
   border-radius: 10px;
