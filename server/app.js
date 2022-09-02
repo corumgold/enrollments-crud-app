@@ -14,8 +14,8 @@ app.use(volleyball);
 app.use(express.json());
 app.use("/api", require("./api"));
 
-// app.get("*", (req, res, next) => {
-//   res.sendFile(path.join(__dirname, "..", "public", "index.html"));
-// });
+app.all("*", (req, res) => {
+  res.status(404).send("<h1>Sorry - we couldn't find that page!</h1><h2><a href=/>Return Home</a></h2>");
+});
 
 module.exports = app;
