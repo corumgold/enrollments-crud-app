@@ -117,7 +117,6 @@ input.checkbox {
 .single-header img {
   object-fit: cover;
   max-width: 500px;
-  max-height: 500px;
   border: 8px solid #3c6e71;
   border-radius: 10px;
 }
@@ -217,5 +216,8 @@ input.checkbox {
   }
   .single-page form {
     min-width: 300px;
+  }
+  .single-header img {
+    max-width: 350px;
   }
 }

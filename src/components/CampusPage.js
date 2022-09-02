@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 const CampusPage = () => {
   const campuses = useSelector((state) => state.campuses);
-  const students = useSelector(state => state.students)
+  const students = useSelector((state) => state.students);
   const params = useParams();
   const dispatch = useDispatch();
 
@@ -24,6 +24,10 @@ const CampusPage = () => {
     dispatch(updateStudent({ ...student, campusId: null }));
   };
 
+  const handleLinkToAddress = (address) => {
+    return "https://maps.google.com/?q=" + address;
+  };
+
   useEffect(() => {
     const getData = async () => {
       const campusData = await axios.get(`/api/campuses/${params.campusId}`);
@@ -37,7 +41,9 @@ const CampusPage = () => {
       <section className="single-header">
         <div className="info flex-column center">
           <h1>{campus.name}</h1>
-          <p>{campus.address}</p>
+          <a href={handleLinkToAddress(campus.address)} target="blank_">
+            {campus.address}
+          </a>
           <p>{campus.description}</p>
         </div>
         <img src={campus.imageUrl} alt="campus photo" />

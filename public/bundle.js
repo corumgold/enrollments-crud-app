@@ -2797,6 +2797,10 @@ var CampusPage = function CampusPage() {
     })));
   };
 
+  var handleLinkToAddress = function handleLinkToAddress(address) {
+    return "https://maps.google.com/?q=" + address;
+  };
+
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     var getData = /*#__PURE__*/function () {
       var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
@@ -2833,7 +2837,10 @@ var CampusPage = function CampusPage() {
     className: "single-header"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
     className: "info flex-column center"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("h1", null, campus.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("p", null, campus.address), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("p", null, campus.description)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("img", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("h1", null, campus.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("a", {
+    href: handleLinkToAddress(campus.address),
+    target: "blank_"
+  }, campus.address), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("p", null, campus.description)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("img", {
     src: campus.imageUrl,
     alt: "campus photo"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
