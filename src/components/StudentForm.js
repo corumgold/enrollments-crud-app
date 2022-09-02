@@ -3,6 +3,7 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { createStudent, updateStudent } from "../store/reducers/studentReducer";
+import { isValidEmail } from "../helperFuncs";
 
 const StudentForm = () => {
   const dispatch = useDispatch();
@@ -57,7 +58,7 @@ const StudentForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setSubmitted(true);
-    if (student.firstName && student.lastName && student.email) {
+    if (student.firstName && student.lastName && isValidEmail(student.email)) {
       setValid(true);
     }
     if (newStudent) {
@@ -91,7 +92,7 @@ const StudentForm = () => {
     }
   }, []);
 
-  console.log(valid, submitted)
+  console.log(valid, submitted);
 
   return (
     <form className="form flex-column">
@@ -108,7 +109,7 @@ const StudentForm = () => {
         onChange={handleStudentFirstName}
       />
       {!student.firstName && submitted ? (
-        <span>First Name is Required</span>
+        <span>Please Enter a First Name</span>
       ) : null}
 
       <label htmlFor="lastName">Last Name:</label>
@@ -118,7 +119,7 @@ const StudentForm = () => {
         onChange={handleStudentLastName}
       />
       {!student.lastName && submitted ? (
-        <span>Last Name is Required</span>
+        <span>Please Enter a Last Name</span>
       ) : null}
 
       <label htmlFor="email">Email:</label>
@@ -127,7 +128,9 @@ const StudentForm = () => {
         value={student.email || ""}
         onChange={handleStudentEmail}
       />
-      {!student.email && submitted ? <span>Email is Required</span> : null}
+      {!isValidEmail(student.email) && submitted ? (
+        <span>Please Enter a Valid Email</span>
+      ) : null}
 
       <label htmlFor="gpa">GPA:</label>
       <input name="gpa" value={student.gpa || ""} onChange={handleStudentGpa} />
