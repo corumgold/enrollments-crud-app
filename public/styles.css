@@ -39,7 +39,7 @@ nav * {
   font-size: 1.5rem;
 }
 nav * :hover,
-.list a:hover {
+a:hover {
   color: #eb5e28;
   transition: 200ms;
 }
@@ -93,7 +93,7 @@ input.checkbox {
 .list-item h2 {
   font-size: 2rem;
 }
-.list-item h2 a {
+a {
   text-decoration: none;
   color: #3c6e71;
 }
