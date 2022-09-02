@@ -1,14 +1,16 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import Campuses from "./components/Campuses";
-import Students from "./components/Students";
-import CampusPage from "./components/CampusPage";
-import StudentPage from "./components/StudentPage";
+import {
+  Home,
+  Nav,
+  Campuses,
+  Students,
+  CampusPage,
+  StudentPage,
+} from "./components";
 import { getCampuses } from "./store/reducers/campusReducer";
 import { getStudents } from "./store/reducers/studentReducer";
 import { Routes, Route, Link } from "react-router-dom";
-import Home from "./components/Home";
-import Nav from "./components/Nav";
 
 function App() {
   const dispatch = useDispatch();
