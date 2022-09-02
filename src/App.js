@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import Campuses from "./components/Campuses";
 import Students from "./components/Students";
 import CampusPage from "./components/CampusPage";
@@ -8,12 +8,10 @@ import { getCampuses } from "./store/reducers/campusReducer";
 import { getStudents } from "./store/reducers/studentReducer";
 import { Routes, Route, Link } from "react-router-dom";
 import Home from "./components/Home";
+import Nav from "./components/Nav";
 
 function App() {
   const dispatch = useDispatch();
-  const campuses = useSelector((state) => state.campuses);
-  const students = useSelector((state) => state.students);
-  const state = useSelector((state) => state);
 
   //Load campuses and students on app load
   useEffect(() => {
@@ -23,20 +21,7 @@ function App() {
 
   return (
     <>
-      <div>
-        <nav id="navigation">
-          <Link to={"/students"}>
-            <p>STUDENTS ({students.length})</p>
-          </Link>
-          <Link to={"/"}>
-            <p>HOME</p>
-          </Link>
-
-          <Link to={"/campuses"}>
-            <p>CAMPUSES ({campuses.length})</p>
-          </Link>
-        </nav>
-      </div>
+      <Nav />
       <Routes>
         <Route index element={<Home />} />
         <Route path="campuses" element={<Campuses />} />

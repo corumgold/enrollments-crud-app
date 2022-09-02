@@ -92,8 +92,6 @@ const StudentForm = () => {
     }
   }, []);
 
-  console.log(valid, submitted);
-
   return (
     <form className="form flex-column">
       <h2>{newStudent ? "Create New Student" : "Update Student"}</h2>
