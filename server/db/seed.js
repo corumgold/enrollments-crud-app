@@ -107,7 +107,6 @@ const seed = async () => {
     imageUrl:
       "https://thumbs.dreamstime.com/b/happy-young-woman-smiling-girl-white-t-shirt-portrait-happy-young-woman-smiling-girl-white-t-shirt-portrait-136240232.jpg",
     gpa: 3.22,
-    campusId: 5,
   });
 
   await Student.create({
@@ -117,7 +116,7 @@ const seed = async () => {
     imageUrl:
       "https://as1.ftcdn.net/v2/jpg/02/46/06/42/1000_F_246064221_th9lHwz9CREm64OZHBLxkfM20MHS2c3m.jpg",
     gpa: 3.77,
-    campusId: 3,
+    campusId: 2,
   });
 
   await Student.create({
@@ -128,6 +127,26 @@ const seed = async () => {
       "https://www.dutimes.com/wp-content/uploads/2019/01/word-image-2.jpeg",
     gpa: 3.89,
     campusId: 4,
+  });
+
+  await Student.create({
+    firstName: "Bennie",
+    lastName: "Factor",
+    email: "whoisit@yahoo.com",
+    imageUrl:
+      "https://www.verywellfamily.com/thmb/kNN_y30o5ity_t-EatOmCI1cI0M=/2121x1414/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-493738798-5873c53e3df78c17b6ef7154.jpg",
+    gpa: 2.53,
+    campusId: 1,
+  });
+
+  await Student.create({
+    firstName: "Kay",
+    lastName: "Oss",
+    email: "heyitskay@aol.com",
+    imageUrl:
+      "https://pyxis.nymag.com/v1/imgs/2f5/fed/f4621d5cd45f59389ab8becfe8b51e5491-02-awkwafina.rsquare.w700.jpg",
+    gpa: 3.3,
+    campusId: 2,
   });
 
   console.log(`
