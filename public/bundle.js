@@ -2791,6 +2791,11 @@ var CampusPage = function CampusPage() {
       campus = _useState2[0],
       setCampus = _useState2[1];
 
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+      _useState4 = _slicedToArray(_useState3, 2),
+      loading = _useState4[0],
+      setLoading = _useState4[1];
+
   var handleUnenroll = function handleUnenroll(student) {
     dispatch((0,_store_reducers_studentReducer__WEBPACK_IMPORTED_MODULE_3__.updateStudent)(_objectSpread(_objectSpread({}, student), {}, {
       campusId: null
@@ -2802,6 +2807,8 @@ var CampusPage = function CampusPage() {
   };
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    setLoading(true);
+
     var getData = /*#__PURE__*/function () {
       var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
         var campusData;
@@ -2815,8 +2822,9 @@ var CampusPage = function CampusPage() {
               case 2:
                 campusData = _context.sent;
                 setCampus(_objectSpread({}, campusData.data));
+                setLoading(false);
 
-              case 4:
+              case 5:
               case "end":
                 return _context.stop();
             }
@@ -2833,7 +2841,7 @@ var CampusPage = function CampusPage() {
   }, [campuses, students]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
     className: "single-page flex-column center"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("section", {
+  }, loading ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("h1", null, "Loading Campus...") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement((react__WEBPACK_IMPORTED_MODULE_1___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("section", {
     className: "single-header"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
     className: "info flex-column center"
@@ -2857,7 +2865,7 @@ var CampusPage = function CampusPage() {
         return handleUnenroll(student);
       }
     }, "Unenroll"));
-  }) : "There are no enrollees!")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_CampusForm__WEBPACK_IMPORTED_MODULE_2__["default"], null));
+  }) : "There are no enrollees!")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_CampusForm__WEBPACK_IMPORTED_MODULE_2__["default"], null)));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CampusPage);
@@ -3338,7 +3346,14 @@ var StudentPage = function StudentPage() {
       student = _useState2[0],
       setStudent = _useState2[1];
 
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState4 = _slicedToArray(_useState3, 2),
+      loading = _useState4[0],
+      setLoading = _useState4[1];
+
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    setLoading(true);
+
     var getData = /*#__PURE__*/function () {
       var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
         var studentData;
@@ -3352,8 +3367,9 @@ var StudentPage = function StudentPage() {
               case 2:
                 studentData = _context.sent;
                 setStudent(_objectSpread({}, studentData.data));
+                setLoading(false);
 
-              case 4:
+              case 5:
               case "end":
                 return _context.stop();
             }
@@ -3370,14 +3386,14 @@ var StudentPage = function StudentPage() {
   }, [students]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "single-page flex-column center"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
+  }, loading ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "Loading Student...") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
     className: "single-header"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "info flex-column center"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, student.lastName, ", ", student.firstName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, student.email ? student.email : "No email on file"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "GPA: ", student.gpa ? student.gpa : "No GPA on file"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, (0,_helperFuncs__WEBPACK_IMPORTED_MODULE_4__.schoolLink)(student))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
     src: student.imageUrl,
     alt: "student photo"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_StudentForm__WEBPACK_IMPORTED_MODULE_2__["default"], null));
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_StudentForm__WEBPACK_IMPORTED_MODULE_2__["default"], null)));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (StudentPage);
