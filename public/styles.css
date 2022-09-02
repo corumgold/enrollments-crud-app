@@ -44,7 +44,6 @@ a:hover {
   transition: 200ms;
 }
 .home {
-  height: 80vh;
   display: flex;
   text-align: center;
   padding: 2rem;

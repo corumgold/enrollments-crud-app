@@ -14,7 +14,7 @@ const Home = () => {
       <ul>
         <li>Create, Read, Update, and Delete campuses/students</li>
         <li>Intuitive, mobile-friendly interface</li>
-        <li>Sort students and campuses based on enrollment status</li>
+        <li>Sort students/campuses by enrollment status</li>
         <li>Precise form validation</li>
         <li>Addresses link to Google Maps for driving directions</li>
       </ul>
