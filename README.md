@@ -17,9 +17,9 @@ school that I have attended!
 ˝
 ## Getting Started
 ### Local Machine (command line)
-- $npm i
-- $createdb acme_school
-- $npm start
+- <code>$npm i</code>
+- <code>$createdb acme_school</code>
+- <code>$npm start</code>
 
 ## Technologies Used
 
